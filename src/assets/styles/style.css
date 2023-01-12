@@ -1,0 +1,78 @@
+body {
+    background-color: antiquewhite;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: aquamarine;
+    height: 100px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.master-container {
+    display: flex;
+    height: calc(100vh - 100px);
+    /* - header height */
+    width: 100%;
+}
+
+.nav {
+    background-color: blueviolet;
+    width: 350px;
+
+}
+
+#content {
+    background-color: gainsboro;
+    width: 100%;
+}
+
+#task-form {
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    width: 70%;
+    margin: auto;
+}
+
+.form-buttons-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.form-buttons-wrapper button {
+    flex: 1 1 0;
+}
+
+.to-do {
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.to-do>* {
+    border: 2px solid blue;
+}
+
+.to-do img{
+    width: 15px;
+}
+
+
+/* When a ToDo is checked */
+.strike-through {
+    position: relative;
+}
+
+.strike-through:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 2px solid #111;
+    width: 100%;
+}
