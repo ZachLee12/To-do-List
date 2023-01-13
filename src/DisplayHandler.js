@@ -100,7 +100,7 @@ export default class DisplayHandler {
         let newLi = this.createProjectLiElement(project, projectController)
         DOMCache.uLElementProjectList.append(newLi)
         this.resetAddProjectFormValues()
-        return newLi
+        return newLi;
     }
 
     static createProjectLiElement(project, projectController) {
