@@ -1,11 +1,11 @@
 export default class Project {
-    static projectId = 0;
-    
+    static id = 0;
+
     constructor(projectName) {
-        this.projectId = Project.projectId
+        this.id = Project.id
         this.projectName = projectName
         this.toDoList = []
-        Project.projectId++;
+        Project.id++;
     }
 
     get getToDoList() {
@@ -14,6 +14,10 @@ export default class Project {
 
     get getProjectName() {
         return this.projectName
+    }
+
+    get getProjectId() {
+        return this.id
     }
 
     addToList(toDoObject) {

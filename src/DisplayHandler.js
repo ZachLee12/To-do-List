@@ -5,18 +5,19 @@ export default class DisplayHandler {
 
     static renderAllToDo(project) {
         project.getToDoList.forEach((toDo) => {
-            this.renderToDo(toDo)
+            this.renderToDo(toDo, project)
         })
     }
 
     //renders a 'toDoObject' on the webpage
-    static renderToDo(toDoObject) {
-        let newToDoDiv = this.createToDoHTMLDiv(toDoObject)
+    static renderToDo(toDoObject, project) {
+        let newToDoDiv = this.createToDoHTMLDiv(toDoObject, project)
         DOMCache.mainContent.append(newToDoDiv)
         this.resetFormValues()
     }
 
-    static createToDoHTMLDiv(toDoObject) {
+    //creates a div for a toDoObject, with all the input functions set
+    static createToDoHTMLDiv(toDoObject, project) {
         let checkbox = document.createElement('input')
         checkbox.type = 'checkbox'
 
@@ -27,7 +28,15 @@ export default class DisplayHandler {
         let leftDiv = document.createElement('div')
         let objectTitleSpan = document.createElement('span')
         objectTitleSpan.innerHTML = toDoObject.title
-        leftDiv.append(checkbox, objectTitleSpan)
+        let detailsButton = document.createElement('button')
+        detailsButton.textContent = 'Details'
+        detailsButton.addEventListener('click', (e) => {
+            //complex selector, as the Details Modal has display of 'none'
+            //a normal document.querySelector() would not work.
+            e.target.nextElementSibling.style.display = 'block'
+        })
+
+        leftDiv.append(checkbox, objectTitleSpan, detailsButton, this.createModal(toDoObject))
 
         let rightDiv = document.createElement('div')
         let objectDueDateSpan = document.createElement('span')
@@ -35,6 +44,7 @@ export default class DisplayHandler {
         let prioritySpan = document.createElement('span')
         prioritySpan.innerHTML = toDoObject.priority
         let binImage = new Image();
+        binImage.id = toDoObject.id
         binImage.src = BinImage
 
         rightDiv.append(objectDueDateSpan, prioritySpan, binImage)
@@ -49,9 +59,30 @@ export default class DisplayHandler {
 
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
+            project.removeFromList(toDoObject.id)
         })
 
         return toDoDiv
+    }
+
+    static createModal(toDoObject) {
+        //Description Modal
+        let modalWrapper = document.createElement('div')
+        modalWrapper.className = 'modal-wrapper'
+        modalWrapper.id = toDoObject.id
+        let modalContent = document.createElement('div')
+        modalContent.className = 'modal-content'
+        modalContent.textContent = toDoObject.description
+        let closeButton = document.createElement('button')
+        closeButton.innerText = 'Close'
+        closeButton.addEventListener('click', () => {
+            modalWrapper.style.display = 'none'
+        })
+
+        modalContent.append(closeButton)
+        modalWrapper.append(modalContent)
+
+        return modalWrapper
     }
 
     static resetFormValues() {
@@ -63,5 +94,31 @@ export default class DisplayHandler {
 
     static resetContentDisplay() {
         DOMCache.mainContent.innerHTML = ''
+    }
+
+    static renderNewProjectLiElement(project, projectController) {
+        let newLi = this.createProjectLiElement(project, projectController)
+        DOMCache.uLElementProjectList.append(newLi)
+        this.resetAddProjectFormValues()
+        return newLi
+    }
+
+    static createProjectLiElement(project, projectController) {
+        let li = document.createElement('li')
+        li.innerHTML = project.getProjectName
+        li.id = project.getProjectId
+        let deleteButton = document.createElement('button')
+        deleteButton.innerHTML = 'X'
+        deleteButton.addEventListener('click', () => {
+            li.remove();
+            projectController.removeFromProjectList(project.id)
+            console.log(projectController.getProjectList)
+        })
+        li.append(deleteButton)
+        return li
+    }
+
+    static resetAddProjectFormValues() {
+        DOMCache.projectName.value = ''
     }
 }

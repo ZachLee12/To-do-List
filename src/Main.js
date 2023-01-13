@@ -5,6 +5,7 @@ import DisplayHandler from './DisplayHandler';
 import { ToDo } from './ToDo';
 import Project from './Project';
 import ProjectController from './ProjectController';
+import Storage from './Storage';
 
 const defaultProjects = (function () {
     //Home Project 
@@ -24,15 +25,45 @@ const defaultProjects = (function () {
 
     return {
         todayProject,
-        homeProject,   
+        homeProject,
     }
 })();
 
 const initalizeFormButtons = (function () {
-    //Form Functions
+    //Add New Project Form functions
+    DOMCache.addProjectButton.addEventListener('click', addProjectFunction)
+    DOMCache.newProjectButton.addEventListener('click', newProjectFunction)
+    DOMCache.cancelProjectButton.addEventListener('click', cancelProjectFunction)
+
+    //Task Form Functions
     DOMCache.newTaskButton.addEventListener('click', newTaskButtonFunction)
     DOMCache.addButton.addEventListener('click', addButtonFunction)
     DOMCache.cancelButton.addEventListener('click', cancelButtonFunction)
+
+    function newProjectFunction() {
+        DOMCache.projectForm.style.display = 'block'
+        DOMCache.newProjectButton.style.display = 'none'
+    }
+
+    function addProjectFunction() {
+        if (DOMCache.projectForm.reportValidity()) {
+
+            DOMCache.projectForm.style.display = 'none'
+            DOMCache.newProjectButton.style.display = 'block'
+            let newProject = new Project(DOMCache.projectName.value)
+            let newLiElement = DisplayHandler.renderNewProjectLiElement(newProject, projectController);
+            initializeNavTabs.initialize(newLiElement, newProject)
+
+            //remember to add the project to the list of projects!!
+            projectController.addToProjectList(newProject)
+            console.log(projectController.getProjectList)
+        }
+    }
+
+    function cancelProjectFunction() {
+        DOMCache.projectForm.style.display = 'none'
+        DOMCache.newProjectButton.style.display = 'block'
+    }
 
     function newTaskButtonFunction() {
         DOMCache.taskForm.style.display = 'flex'
@@ -43,9 +74,10 @@ const initalizeFormButtons = (function () {
         DOMCache.taskForm.style.display = 'none'
         DOMCache.newTaskButton.style.display = 'block'
         let newToDo = new ToDo(DOMCache.title.value, DOMCache.description.value, DOMCache.dueDate.value, DOMCache.priority.value)
+        DisplayHandler.renderToDo(newToDo, projectController.getCurrentProject)
+        //remember to add it to the ToDo list!!
         projectController.getCurrentProject.addToList(newToDo)
-        DisplayHandler.renderToDo(newToDo)
-        
+
     }
 
     function cancelButtonFunction() {
@@ -62,6 +94,7 @@ projectController.addToProjectList(defaultProjects.todayProject)
 DisplayHandler.renderAllToDo(projectController.getCurrentProject)
 
 const initializeNavTabs = (function () {
+    //defaults
     DOMCache.homeTab.addEventListener('click', () => {
         setCurrentProject(defaultProjects.homeProject)
         renderProject(defaultProjects.homeProject);
@@ -72,6 +105,13 @@ const initializeNavTabs = (function () {
         renderProject(defaultProjects.todayProject);
     })
 
+    function initialize(navElement, project) {
+        navElement.addEventListener('click', () => {
+            setCurrentProject(project)
+            renderProject(project)
+        })
+    }
+
     function renderProject(project) {
         DisplayHandler.resetContentDisplay();
         DisplayHandler.renderAllToDo(project)
@@ -80,7 +120,12 @@ const initializeNavTabs = (function () {
     function setCurrentProject(project) {
         projectController.setCurrentProject = project
     }
+
+    return {
+        initialize
+    }
 })();
+
 
 
 
