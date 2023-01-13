@@ -22,10 +22,13 @@ body {
 .nav {
     background-color: blueviolet;
     width: 350px;
-
 }
 
-#content {
+ul li {
+    border: 2px solid rgb(255, 255, 255)
+}
+
+#content-wrapper {
     background-color: gainsboro;
     width: 100%;
 }

@@ -16,14 +16,14 @@
     <div class="master-container">
         <nav class="nav">
             <ul>
-                <li>Home</li>
-                <li>Today</li>
-                <li>Next Week</li>
+                <li id="home">Home</li>
+                <li id="today">Today</li>
+                <li id="next-week">Next Week</li>
             </ul>
 
         </nav>
-        <div id='content'>
-
+        <div id='content-wrapper'>
+            <div id='content'></div>
             <form action="" onsubmit="return false" id="task-form">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title">

@@ -13,4 +13,9 @@ export default class DOMCache {
     static dueDate = document.getElementById('due-date')
     static priority = document.getElementById('priority')
 
+    //nav tabs
+    static homeTab = document.getElementById('home')
+    static todayTab = document.getElementById('today')
+    static nextWeekTab = document.getElementById('next-week')
+
 }

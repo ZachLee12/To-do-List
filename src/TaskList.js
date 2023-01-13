@@ -1,12 +1,15 @@
-import { ToDo } from "./ToDo";
-
 export class TaskList {
-    constructor() {
+    constructor(projectName) {
+        this.projectName = projectName
         this.toDoList = []
     }
 
     get getToDoList() {
         return this.toDoList
+    }
+
+    get taskListName() {
+        return this.projectName
     }
 
     addToList(toDoObject) {

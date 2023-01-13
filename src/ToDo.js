@@ -8,7 +8,6 @@ export class ToDo {
         this.dueDate = dueDate
         this.priority = priority
         this.note = "no additional notes"
-        this.checked = false
         ToDo.instanceId++;
     }   
 

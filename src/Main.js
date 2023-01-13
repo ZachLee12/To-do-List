@@ -3,20 +3,10 @@ import './assets/styles/style.css'
 import DOMCache from './DOMCache'
 import DisplayHandler from './DisplayHandler';
 import { ToDo } from './ToDo';
-import { TaskList } from './TaskList';
+import Project from './Project';
 
-//maybe export this module? 
-const GUI = (function () {
-    //initialize TaskList
-    const taskList = new TaskList();
-    //dummy values
-    let test1 = new ToDo('Homework', 'Plz do homework', '2023-01-03', 'Low')
-    let test2 = new ToDo('Hiking', 'Pilatus', '2023-08-03', 'High')
-    taskList.addToList(test1)
-    taskList.addToList(test2)
-    DisplayHandler.renderAllToDo(taskList)
-    
-    //GUI Functions
+const initalizeFormButtons = (function () {
+    //Form Functions
     DOMCache.newTaskButton.addEventListener('click', newTaskButtonFunction)
     DOMCache.addButton.addEventListener('click', addButtonFunction)
     DOMCache.cancelButton.addEventListener('click', cancelButtonFunction)
@@ -30,9 +20,6 @@ const GUI = (function () {
         DOMCache.taskForm.style.display = 'none'
         DOMCache.newTaskButton.style.display = 'block'
 
-        let newToDo = new ToDo(DOMCache.title.value, DOMCache.description.value, DOMCache.dueDate.value, DOMCache.priority.value)
-        taskList.addToList(newToDo)
-        DisplayHandler.renderToDo(newToDo)
     }
 
     function cancelButtonFunction() {
@@ -42,7 +29,51 @@ const GUI = (function () {
 
 })();
 
+const projectController = (function () {
+    //Home Project 
+    const homeProject = new Project('Home Project')
+    let test1 = new ToDo('Homework', 'Plz do homework', '2023-01-03', 'Low')
+    let test2 = new ToDo('Hiking', 'Pilatus', '2023-08-03', 'High')
+    homeProject.addToList(test1)
+    homeProject.addToList(test2)
 
+    //Today Project
+    const todayProject = new Project('Today Project')
+    let testToday1 = new ToDo('Today', 'It is today!!', '2023-01-03', 'Low')
+    let testToday2 = new ToDo('Buy fish', 'Salmons', '2023-08-03', 'Medium')
+    todayProject.addToList(testToday1)
+    todayProject.addToList(testToday2)
+
+    //Controls the project that is currently active
+    let currentProject = homeProject; //default
+    const projectList = [homeProject,todayProject]
+
+    function setCurrentProject() {
+        
+    }
+
+    return {
+        todayProject,
+        homeProject,
+        projectList,
+        currentProject
+    }
+})();
+
+const initializeNavTabs = (function () {
+    DOMCache.homeTab.addEventListener('click', () => {
+        renderProject(projectController.homeProject);
+    })
+
+    DOMCache.todayTab.addEventListener('click', () => {
+        renderProject(projectController.todayProject);
+    })
+
+    function renderProject(project) {
+        DisplayHandler.resetContentDisplay();
+        DisplayHandler.renderAllToDo(project)
+    }
+})();
 
 
 

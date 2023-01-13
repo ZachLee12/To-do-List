@@ -1,9 +1,10 @@
 import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
+
 export default class DisplayHandler {
 
-    static renderAllToDo(taskListObject) {
-        taskListObject.getToDoList.forEach((toDo) => {
+    static renderAllToDo(project) {
+        project.getToDoList.forEach((toDo) => {
             this.renderToDo(toDo)
         })
     }
@@ -11,7 +12,7 @@ export default class DisplayHandler {
     //renders a 'toDoObject' on the webpage
     static renderToDo(toDoObject) {
         let newToDoDiv = this.createToDoHTMLDiv(toDoObject)
-        DOMCache.mainContent.insertBefore(newToDoDiv, DOMCache.taskForm)
+        DOMCache.mainContent.append(newToDoDiv)
         this.resetFormValues()
     }
 
@@ -58,5 +59,9 @@ export default class DisplayHandler {
         DOMCache.description.value = ""
         DOMCache.dueDate.value = ""
         DOMCache.priority.selectedIndex = 0;
+    }
+
+    static resetContentDisplay() {
+        DOMCache.mainContent.innerHTML = ''
     }
 }
