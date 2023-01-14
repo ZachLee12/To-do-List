@@ -3,21 +3,21 @@ import BinImage from './assets/images/bin.png'
 
 export default class DisplayHandler {
 
-    static renderAllToDo(project) {
+    static renderAllToDo(project, projectController) {
         project.getToDoList.forEach((toDo) => {
-            this.renderToDo(toDo, project)
+            this.renderToDo(toDo, project, projectController)
         })
     }
 
     //renders a 'toDoObject' on the webpage
-    static renderToDo(toDoObject, project) {
-        let newToDoDiv = this.createToDoHTMLDiv(toDoObject, project)
+    static renderToDo(toDoObject, project, projectController) {
+        let newToDoDiv = this.createToDoHTMLDiv(toDoObject, project, projectController)
         DOMCache.mainContent.append(newToDoDiv)
         this.resetFormValues()
     }
 
     //creates a div for a toDoObject, with all the input functions set
-    static createToDoHTMLDiv(toDoObject, project) {
+    static createToDoHTMLDiv(toDoObject, project, projectController) {
         let checkbox = document.createElement('input')
         checkbox.type = 'checkbox'
 
@@ -60,6 +60,8 @@ export default class DisplayHandler {
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
             project.removeFromList(toDoObject.id)
+            projectController.addProjectToStorage(projectController.getCurrentProject)
+            
         })
 
         return toDoDiv
@@ -96,6 +98,19 @@ export default class DisplayHandler {
         DOMCache.mainContent.innerHTML = ''
     }
 
+    static renderLocalProjects(projectController) {
+        projectController.getProjectList.forEach(project => {
+            let newLiElement = this.renderNewProjectLiElement(project, projectController)
+
+            //initialize element event listener
+            newLiElement.addEventListener('click', () => {
+                projectController.setCurrentProject = project
+                this.resetContentDisplay();
+                this.renderAllToDo(project, projectController);
+            })
+        })
+    }
+
     static renderNewProjectLiElement(project, projectController) {
         let newLi = this.createProjectLiElement(project, projectController)
         DOMCache.uLElementProjectList.append(newLi)
@@ -112,7 +127,8 @@ export default class DisplayHandler {
         deleteButton.addEventListener('click', () => {
             li.remove();
             projectController.removeFromProjectList(project.id)
-            console.log(projectController.getProjectList)
+            // projectController.addProjectToStorage(project)
+            // console.log(projectController.getProjectList)
         })
         li.append(deleteButton)
         return li

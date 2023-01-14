@@ -7,11 +7,11 @@ export default class ProjectController {
         this.currentProject = null
         this.storageList = Storage.getProjectsArray();
         this.storageList.forEach(object => {
-            let newProject = new Project(object.projectName, object.toDoList)
+            let newProject = new Project(object.projectName)
+            newProject.setTodoList = object.toDoList
             this.projectList.push(newProject)
         })
-
-        
+    
         console.log(this.storageList)
         console.log(this.projectList)
         console.log(Storage.getProjectsArray());
@@ -27,6 +27,10 @@ export default class ProjectController {
 
     get getProjectList() {
         return this.projectList
+    }
+
+    addProjectToStorage(project) {
+        Storage.addProject(project)
     }
 
     addToProjectList(project) {

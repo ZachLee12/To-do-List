@@ -20,6 +20,10 @@ export default class Project {
         return this.id
     }
 
+    set setTodoList(toDoList) {
+        this.toDoList = toDoList
+    }
+
     addToList(toDoObject) {
         this.toDoList.push(toDoObject)
     }

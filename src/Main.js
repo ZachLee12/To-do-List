@@ -7,6 +7,8 @@ import Project from './Project';
 import ProjectController from './ProjectController';
 import Storage from './Storage';
 
+//just dummy values to test localStorage
+// localStorage.clear();
 const defaultProjects = (function () {
     //Home Project 
     const homeProject = new Project('Home Project')
@@ -29,8 +31,8 @@ const defaultProjects = (function () {
     }
 })();
 // localStorage.clear();
-// Storage.addProject(defaultProjects.homeProject)
-// Storage.addProject(defaultProjects.todayProject)
+Storage.addProject(defaultProjects.homeProject)
+Storage.addProject(defaultProjects.todayProject)
 
 const initalizeFormButtons = (function () {
     //Add New Project Form functions
@@ -59,7 +61,7 @@ const initalizeFormButtons = (function () {
 
             //remember to add the project to the list of projects!!
             projectController.addToProjectList(newProject)
-            console.log(projectController.getProjectList)
+            projectController.addProjectToStorage(newProject)
         }
     }
 
@@ -80,6 +82,7 @@ const initalizeFormButtons = (function () {
         DisplayHandler.renderToDo(newToDo, projectController.getCurrentProject)
         //remember to add it to the ToDo list!!
         projectController.getCurrentProject.addToList(newToDo)
+        projectController.addProjectToStorage(projectController.getCurrentProject)
 
     }
 
@@ -92,6 +95,7 @@ const initalizeFormButtons = (function () {
 
 //DEFAULTS
 const projectController = new ProjectController()
+DisplayHandler.renderLocalProjects(projectController)
 // projectController.addToProjectList(defaultProjects.homeProject)
 // projectController.addToProjectList(defaultProjects.todayProject)
 // DisplayHandler.renderAllToDo(projectController.getCurrentProject)
