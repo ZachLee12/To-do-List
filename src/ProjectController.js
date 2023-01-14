@@ -1,9 +1,20 @@
-import Project from "./Project";
+import Project from "./Project"; 
+import Storage from "./Storage";
 
 export default class ProjectController {
-    constructor(currentProject) {
-        this.currentProject = currentProject
+    constructor() {
         this.projectList = []
+        this.currentProject = null
+        this.storageList = Storage.getProjectsArray();
+        this.storageList.forEach(object => {
+            let newProject = new Project(object.projectName, object.toDoList)
+            this.projectList.push(newProject)
+        })
+
+        
+        console.log(this.storageList)
+        console.log(this.projectList)
+        console.log(Storage.getProjectsArray());
     }
 
     get getCurrentProject() {

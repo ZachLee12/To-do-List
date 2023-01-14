@@ -28,6 +28,9 @@ const defaultProjects = (function () {
         homeProject,
     }
 })();
+// localStorage.clear();
+// Storage.addProject(defaultProjects.homeProject)
+// Storage.addProject(defaultProjects.todayProject)
 
 const initalizeFormButtons = (function () {
     //Add New Project Form functions
@@ -88,10 +91,10 @@ const initalizeFormButtons = (function () {
 })();
 
 //DEFAULTS
-const projectController = new ProjectController(defaultProjects.homeProject)
-projectController.addToProjectList(defaultProjects.homeProject)
-projectController.addToProjectList(defaultProjects.todayProject)
-DisplayHandler.renderAllToDo(projectController.getCurrentProject)
+const projectController = new ProjectController()
+// projectController.addToProjectList(defaultProjects.homeProject)
+// projectController.addToProjectList(defaultProjects.todayProject)
+// DisplayHandler.renderAllToDo(projectController.getCurrentProject)
 
 const initializeNavTabs = (function () {
     //defaults
