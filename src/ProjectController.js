@@ -41,4 +41,8 @@ export default class ProjectController {
         let toRemove = this.projectList.find(project => project.id === id)
         this.projectList.splice(this.projectList.indexOf(toRemove), 1)
     }
+
+    removeFromStorageList(project) {
+        Storage.removeProject(project)
+    }
 }

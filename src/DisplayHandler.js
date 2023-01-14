@@ -127,7 +127,7 @@ export default class DisplayHandler {
         deleteButton.addEventListener('click', () => {
             li.remove();
             projectController.removeFromProjectList(project.id)
-            // projectController.addProjectToStorage(project)
+            projectController.removeFromStorageList(project)
             // console.log(projectController.getProjectList)
         })
         li.append(deleteButton)

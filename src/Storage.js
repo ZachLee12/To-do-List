@@ -4,8 +4,8 @@ export default class Storage {
         localStorage.setItem(project.projectName, JSON.stringify(project))
     }
 
-    static removeProject() {
-
+    static removeProject(project) {
+        localStorage.removeItem(project.getProjectName)
     }
 
     static getProjectsArray() {
