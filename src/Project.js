@@ -1,5 +1,7 @@
 import { ToDo } from './ToDo';
 
+//this class controls all ToDo Objects in a List
+//it has, however, a static method that allows instantiation of a ToDo
 export default class Project {
     static id = 0;
 
@@ -35,6 +37,7 @@ export default class Project {
         this.toDoList.splice(this.toDoList.indexOf(toRemove), 1)
     }
 
+    //a static method just for creating a ToDo
     static createToDo(title, description, dueDate, priority) {
         return new ToDo(title, description, dueDate, priority)
     }

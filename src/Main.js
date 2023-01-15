@@ -4,14 +4,18 @@ import DOMCache from './DOMCache'
 import DisplayHandler from './DisplayHandler';
 import Project from './Project';
 import ProjectController from './ProjectController';
-import DefaultTabs from './DefaultTabs';
 
 //just dummy values to test localStorage
 // localStorage.clear();
+
 //DEFAULTS
 const projectController = new ProjectController()
 DisplayHandler.renderLocalProjects(projectController)
-const defaultProjects = DefaultTabs.initDefaultProjects();
+const defaultProjects = projectController.initDefaultProjects(); //home project and today project
+DisplayHandler.initNavElement(DOMCache.homeTab, defaultProjects.homeProject, projectController)
+DisplayHandler.initNavElement(DOMCache.todayTab, defaultProjects.todayProject, projectController)
+
+
 const initalizeFormButtons = (function () {
     //Add New Project Form functions
     DOMCache.addProjectButton.addEventListener('click', addProjectFunction)
