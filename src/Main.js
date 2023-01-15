@@ -14,7 +14,7 @@ DisplayHandler.renderLocalProjects(projectController)
 const defaultProjects = projectController.initDefaultProjects(); //home project and today project
 DisplayHandler.initNavElement(DOMCache.homeTab, defaultProjects.homeProject, projectController)
 DisplayHandler.initNavElement(DOMCache.todayTab, defaultProjects.todayProject, projectController)
-
+DisplayHandler.initHomeElement(DOMCache.homeTab,projectController)
 
 const initalizeFormButtons = (function () {
     //Add New Project Form functions

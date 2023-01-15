@@ -2,11 +2,19 @@ import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
 
 export default class DisplayHandler {
+    static initHomeElement(homeElement, projectController) {
+        homeElement.addEventListener('click', () => {
+            projectController.getProjectList.forEach(project => {
+                this.renderAllToDo(project, projectController)
+            })
+        })
+    }
+
     static initNavElement(navElement, project, projectController) {
         navElement.addEventListener('click', () => {
             projectController.setCurrentProject = project
             this.resetContentDisplay();
-            this.renderAllToDo(project)
+            this.renderAllToDo(project, projectController)
         })
     }
 
