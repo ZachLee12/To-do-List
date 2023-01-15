@@ -43,7 +43,18 @@ export default class DisplayHandler {
 
     static renderThisWeek(projectController) {
         let oneWeekMillisecond = 7 * 24 * 60 * 60 * 1000; // for 7 days in milliseconds
-        let today = format(new Date(), 'yyyy-MM-dd');
+        let today = new Date();
+
+        let todayTime = today.getTime();
+        projectController.getProjectList.forEach(project => {
+            project.getToDoList.forEach(toDo => {
+                let input = new Date(toDo.dueDate)
+                let inputTime = input.getTime();
+                if (Math.abs(inputTime - todayTime) < oneWeekMillisecond) {
+                    this.renderToDo(toDo)
+                }
+            })
+        })
     }
 
     static initNavElement(navElement, project, projectController) {
