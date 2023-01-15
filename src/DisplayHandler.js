@@ -60,10 +60,8 @@ export default class DisplayHandler {
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
             project.removeFromList(toDoObject.id)
-            projectController.addProjectToStorage(projectController.getCurrentProject)
-            
+            projectController.addProjectToStorage(projectController.getCurrentProject)  
         })
-
         return toDoDiv
     }
 
