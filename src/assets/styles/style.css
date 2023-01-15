@@ -28,6 +28,14 @@ ul li {
     border: 2px solid rgb(255, 255, 255)
 }
 
+ul li:hover{
+    background-color: #888;
+}
+
+ul li:active{
+    background-color: rgb(94, 94, 94);
+}
+
 #content-wrapper {
     background-color: gainsboro;
     width: 100%;

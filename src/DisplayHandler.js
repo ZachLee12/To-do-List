@@ -1,18 +1,25 @@
 import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
+import Storage from './Storage';
 
 export default class DisplayHandler {
     static initHomeElement(homeElement, projectController) {
         homeElement.addEventListener('click', () => {
-            projectController.getProjectList.forEach(project => {
-                this.renderAllToDo(project, projectController)
-            })
+            this.resetContentDisplay();
+            this.renderHome(projectController)
+        })
+    }
+
+    static renderHome(projectController) {
+        projectController.getProjectList.forEach(project => {
+            this.renderAllToDo(project, projectController)
         })
     }
 
     static initNavElement(navElement, project, projectController) {
         navElement.addEventListener('click', () => {
             projectController.setCurrentProject = project
+            console.log(projectController.getCurrentProject)
             this.resetContentDisplay();
             this.renderAllToDo(project, projectController)
         })
@@ -49,6 +56,7 @@ export default class DisplayHandler {
             //complex selector, as the Details Modal has display of 'none'
             //a normal document.querySelector() would not work.
             e.target.nextElementSibling.style.display = 'block'
+            
         })
 
         leftDiv.append(checkbox, objectTitleSpan, detailsButton, this.createModal(toDoObject))
@@ -74,8 +82,11 @@ export default class DisplayHandler {
 
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
+            console.log(toDoDiv)
             project.removeFromList(toDoObject.id)
-            projectController.addProjectToStorage(projectController.getCurrentProject)
+            console.log(project.projectName + ' yes boi')
+            projectController.addProjectToStorage(project)
+            
         })
         return toDoDiv
     }
@@ -116,11 +127,7 @@ export default class DisplayHandler {
             let newLiElement = this.renderNewProjectLiElement(project, projectController)
 
             //initialize element event listener
-            newLiElement.addEventListener('click', () => {
-                projectController.setCurrentProject = project
-                this.resetContentDisplay();
-                this.renderAllToDo(project, projectController);
-            })
+            this.initNavElement(newLiElement, project, projectController)
         })
     }
 

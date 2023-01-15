@@ -11,10 +11,8 @@ import ProjectController from './ProjectController';
 //DEFAULTS
 const projectController = new ProjectController()
 DisplayHandler.renderLocalProjects(projectController)
-const defaultProjects = projectController.initDefaultProjects(); //home project and today project
-DisplayHandler.initNavElement(DOMCache.homeTab, defaultProjects.homeProject, projectController)
-DisplayHandler.initNavElement(DOMCache.todayTab, defaultProjects.todayProject, projectController)
-DisplayHandler.initHomeElement(DOMCache.homeTab,projectController)
+DisplayHandler.renderHome(projectController)
+DisplayHandler.initHomeElement(DOMCache.homeTab, projectController)
 
 const initalizeFormButtons = (function () {
     //Add New Project Form functions
@@ -61,11 +59,11 @@ const initalizeFormButtons = (function () {
         DOMCache.taskForm.style.display = 'none'
         DOMCache.newTaskButton.style.display = 'block'
         let newToDo = Project.createToDo(DOMCache.title.value, DOMCache.description.value, DOMCache.dueDate.value, DOMCache.priority.value)
-        DisplayHandler.renderToDo(newToDo, projectController.getCurrentProject)
+        DisplayHandler.renderToDo(newToDo, projectController.getCurrentProject, projectController)
         //remember to add it to the ToDo list!!
         projectController.getCurrentProject.addToList(newToDo)
         projectController.addProjectToStorage(projectController.getCurrentProject)
-
+        console.log(newToDo)
     }
 
     function cancelButtonFunction() {

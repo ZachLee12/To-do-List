@@ -9,11 +9,14 @@ export default class ProjectController {
         this.storageList = Storage.getProjectsArray();
         this.storageList.forEach(object => {
             let newProject = new Project(object.projectName)
-            newProject.setTodoList = object.toDoList
+            // newProject.setTodoList = object.toDoList //NO!!!!!
+            object.toDoList.forEach(toDo => {
+                let newToDo = Project.createToDo(toDo.title, toDo.description, toDo.dueDate, toDo.priority)
+                newProject.addToList(newToDo)
+            })
             this.projectList.push(newProject)
         })
 
-        console.log(this.storageList)
         console.log(this.projectList)
         console.log(Storage.getProjectsArray());
     }
@@ -45,27 +48,5 @@ export default class ProjectController {
 
     removeFromStorageList(project) {
         Storage.removeProject(project)
-    }
-
-    initDefaultProjects() {
-        //Home Project 
-        const homeProject = new Project('Home Project')
-        let test1 = Project.createToDo('Homework', 'Plz do homework', '2023-01-03', 'Low')
-        let test2 = Project.createToDo('Hiking', 'Pilatus', '2023-08-03', 'High')
-        homeProject.addToList(test1)
-        homeProject.addToList(test2)
-
-        //Today Project
-        const todayProject = new Project('Today Project')
-        let testToday1 = Project.createToDo('Today', 'It is today!!', '2023-01-03', 'Low')
-        let testToday2 = Project.createToDo('Buy fish', 'Salmons', '2023-08-03', 'Medium')
-        todayProject.addToList(testToday1)
-        todayProject.addToList(testToday2)
-
-
-        return {
-            todayProject,
-            homeProject,
-        }
     }
 }
