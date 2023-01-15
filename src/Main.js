@@ -13,10 +13,13 @@ const projectController = new ProjectController()
 DisplayHandler.renderLocalProjects(projectController)
 DisplayHandler.renderHome(projectController)
 DisplayHandler.initHomeElement(DOMCache.homeTab, projectController)
+DisplayHandler.initTodayElement(DOMCache.todayTab, projectController)
+DisplayHandler.initThisWeekElement(DOMCache.thisWeekTab, projectController)
 
 const initalizeFormButtons = (function () {
-    //Home Tab Function
+    //Home and Today Tab Function
     DOMCache.homeTab.addEventListener('click', hideTaskFunctions)
+    DOMCache.todayTab.addEventListener('click', hideTaskFunctions)
 
     //Add New Project Form functions
     DOMCache.addProjectButton.addEventListener('click', addProjectFunction)
@@ -79,19 +82,6 @@ const initalizeFormButtons = (function () {
         DOMCache.newTaskButton.style.display = 'none';
     }
 
-})();
-
-const initializeNavTabs = (function () {
-    //defaults
-    DOMCache.homeTab.addEventListener('click', () => {
-        // setCurrentProject(defaultProjects.homeProject)
-        // renderProject(defaultProjects.homeProject);
-    })
-
-    DOMCache.todayTab.addEventListener('click', () => {
-        // setCurrentProject(defaultProjects.todayProject)
-        // renderProject(defaultProjects.todayProject);
-    })
 })();
 
 

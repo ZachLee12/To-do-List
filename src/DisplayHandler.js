@@ -1,6 +1,6 @@
 import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
-import Storage from './Storage';
+import { format } from 'date-fns';
 
 export default class DisplayHandler {
     static initHomeElement(homeElement, projectController) {
@@ -14,6 +14,36 @@ export default class DisplayHandler {
         projectController.getProjectList.forEach(project => {
             this.renderAllToDo(project, projectController)
         })
+    }
+
+    static initTodayElement(todayElement, projectController) {
+        todayElement.addEventListener('click', () => {
+            this.resetContentDisplay();
+            this.renderToday(projectController)
+        })
+    }
+
+    static renderToday(projectController) {
+        let today = format(new Date(), 'yyyy-MM-dd');
+        projectController.getProjectList.forEach(project => {
+            project.getToDoList.forEach(toDo => {
+                if (toDo.dueDate === today) {
+                    this.renderToDo(toDo);
+                }
+            })
+        })
+    }
+
+    static initThisWeekElement(thisWeekElement, projectController) {
+        thisWeekElement.addEventListener('click', () => {
+            this.resetContentDisplay();
+            this.renderThisWeek(projectController)
+        })
+    }
+
+    static renderThisWeek(projectController) {
+        let oneWeekMillisecond = 7 * 24 * 60 * 60 * 1000; // for 7 days in milliseconds
+        let today = format(new Date(), 'yyyy-MM-dd');
     }
 
     static initNavElement(navElement, project, projectController) {

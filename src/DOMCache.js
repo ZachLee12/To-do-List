@@ -24,7 +24,7 @@ export default class DOMCache {
     static uLElementProjectList = document.getElementById('project-list')
     static homeTab = document.getElementById('home')
     static todayTab = document.getElementById('today')
-    static nextWeekTab = document.getElementById('next-week')
+    static thisWeekTab = document.getElementById('this-week')
 
     //access a custom element
     static queryElement = function (query) {
