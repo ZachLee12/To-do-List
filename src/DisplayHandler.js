@@ -2,6 +2,13 @@ import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
 
 export default class DisplayHandler {
+    static initNavElement(navElement, project, projectController) {
+        navElement.addEventListener('click', () => {
+            projectController.setCurrentProject = project
+            this.resetContentDisplay();
+            this.renderAllToDo(project)
+        })
+    }
 
     static renderAllToDo(project, projectController) {
         project.getToDoList.forEach((toDo) => {
@@ -60,7 +67,7 @@ export default class DisplayHandler {
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
             project.removeFromList(toDoObject.id)
-            projectController.addProjectToStorage(projectController.getCurrentProject)  
+            projectController.addProjectToStorage(projectController.getCurrentProject)
         })
         return toDoDiv
     }
@@ -126,7 +133,6 @@ export default class DisplayHandler {
             li.remove();
             projectController.removeFromProjectList(project.id)
             projectController.removeFromStorageList(project)
-            // console.log(projectController.getProjectList)
         })
         li.append(deleteButton)
         return li

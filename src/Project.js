@@ -1,3 +1,5 @@
+import { ToDo } from './ToDo';
+
 export default class Project {
     static id = 0;
 
@@ -31,6 +33,10 @@ export default class Project {
     removeFromList(id) {
         let toRemove = this.toDoList.find(toDo => toDo.id === id)
         this.toDoList.splice(this.toDoList.indexOf(toRemove), 1)
+    }
+
+    static createToDo(title, description, dueDate, priority) {
+        return new ToDo(title, description, dueDate, priority)
     }
 
 }
