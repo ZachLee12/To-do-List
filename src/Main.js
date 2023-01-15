@@ -15,6 +15,9 @@ DisplayHandler.renderHome(projectController)
 DisplayHandler.initHomeElement(DOMCache.homeTab, projectController)
 
 const initalizeFormButtons = (function () {
+    //Home Tab Function
+    DOMCache.homeTab.addEventListener('click', hideTaskFunctions)
+
     //Add New Project Form functions
     DOMCache.addProjectButton.addEventListener('click', addProjectFunction)
     DOMCache.newProjectButton.addEventListener('click', newProjectFunction)
@@ -68,7 +71,12 @@ const initalizeFormButtons = (function () {
 
     function cancelButtonFunction() {
         DOMCache.taskForm.style.display = 'none'
-        DOMCache.newTaskButton.style.display = 'block'
+        DOMCache.newTaskButton.style.display = 'block';
+    }
+
+    function hideTaskFunctions() {
+        DOMCache.taskForm.style.display = 'none'
+        DOMCache.newTaskButton.style.display = 'none';
     }
 
 })();
