@@ -20,7 +20,8 @@ const initalizeFormButtons = (function () {
     //Home and Today Tab Function
     DOMCache.homeTab.addEventListener('click', hideTaskFunctions)
     DOMCache.todayTab.addEventListener('click', hideTaskFunctions)
-
+    DOMCache.thisWeekTab.addEventListener('click', hideTaskFunctions)
+    
     //Add New Project Form functions
     DOMCache.addProjectButton.addEventListener('click', addProjectFunction)
     DOMCache.newProjectButton.addEventListener('click', newProjectFunction)

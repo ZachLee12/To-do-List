@@ -28,7 +28,7 @@ export default class DisplayHandler {
         projectController.getProjectList.forEach(project => {
             project.getToDoList.forEach(toDo => {
                 if (toDo.dueDate === today) {
-                    this.renderToDo(toDo);
+                    this.renderToDo(toDo, project, projectController);
                 }
             })
         })
@@ -51,7 +51,7 @@ export default class DisplayHandler {
                 let input = new Date(toDo.dueDate)
                 let inputTime = input.getTime();
                 if (Math.abs(inputTime - todayTime) < oneWeekMillisecond) {
-                    this.renderToDo(toDo)
+                    this.renderToDo(toDo, project, projectController);
                 }
             })
         })
@@ -123,11 +123,10 @@ export default class DisplayHandler {
 
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
-            console.log(toDoDiv)
             project.removeFromList(toDoObject.id)
-            console.log(project.projectName + ' yes boi')
             projectController.addProjectToStorage(project)
-
+            console.log(toDoDiv)
+            console.log(project.projectName)
         })
         return toDoDiv
     }
