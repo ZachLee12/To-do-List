@@ -41,7 +41,7 @@ body {
 
 ul li {
     line-height: 2.2em;
-    transition: all 400ms ease-in-out;
+    transition: all 250ms ease-in-out;
     color: whitesmoke;
     padding-left: 25px;
     font-size: 1.3em;
@@ -213,6 +213,7 @@ li img.delete-project {
 }
 
 #new-task-button {
+    display: none;
     margin: auto;
     margin-top: 10px;
     width: 140px;
