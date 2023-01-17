@@ -10,16 +10,21 @@
 
 <body>
     <header class="header">
-        My To-Do-List
+        <p class="header-title">My To-Do-List</p>
     </header>
 
     <div class="master-container">
         <nav class="nav">
-            <ul id="project-list">
+            <ul id="nav-tabs-list">
                 <li id="home">Home</li>
                 <li id="today">Today</li>
                 <li id="this-week">This Week</li>
             </ul>
+            <p class="projects-word">Projects</p>
+            <ul id="project-list">
+
+            </ul>
+
             <form action="" onsubmit="return false" id="new-project-form">
                 <label for="project-name">Project Name:</label>
                 <input type="text" name="project-name" id="project-name" required>
@@ -44,11 +49,11 @@
                 <input type="date" name="dueDate" id="due-date" required>
 
                 <label for="priority">Priority</label>
-                <select name="priority" id="priority" required>
-                    <option value="">Choose Priority</option>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                <select name="priority" id="priority">
+                    <option value="No Priority" selected>No Priority</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
 
                 <nav class="form-buttons-wrapper">

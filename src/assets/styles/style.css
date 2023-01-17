@@ -12,6 +12,10 @@ body {
     justify-content: center;
 }
 
+.header-title {
+    font-size: 2em;
+}
+
 .master-container {
     display: flex;
     height: calc(100vh - 100px);
@@ -25,14 +29,15 @@ body {
 }
 
 ul li {
-    border: 2px solid rgb(255, 255, 255)
+    border: 2px solid rgb(255, 255, 255);
+    line-height: 2.2em;
 }
 
-ul li:hover{
+ul li:hover {
     background-color: #888;
 }
 
-ul li:active{
+ul li:active {
     background-color: rgb(94, 94, 94);
 }
 
@@ -83,9 +88,9 @@ ul li:active{
     content: " ";
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 20px;
     border-bottom: 2px solid #111;
-    width: 100%;
+    width: calc(100% - 20px - 15px); /*full width - left padding - length of bin img*/
 }
 
 /* MODAL */

@@ -1,5 +1,6 @@
 import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
+import EditImage from './assets/images/editing.png'
 import { format } from 'date-fns';
 
 export default class DisplayHandler {
@@ -105,14 +106,33 @@ export default class DisplayHandler {
         let rightDiv = document.createElement('div')
         let objectDueDateSpan = document.createElement('span')
         objectDueDateSpan.innerHTML = toDoObject.dueDate
+        let editDueDateInput = document.createElement('input')
+        editDueDateInput.type = 'date'
+        editDueDateInput.addEventListener('change', (e) => {
+            objectDueDateSpan.innerHTML = editDueDateInput.value
+            toDoObject.dueDate = editDueDateInput.value
+            projectController.addProjectToStorage(project)
+        })
+        objectDueDateSpan.append(editDueDateInput)
+
         let prioritySpan = document.createElement('span')
         prioritySpan.innerHTML = toDoObject.priority
+
+        let editPriorityInput = document.createElement('input')
+
         let binImage = new Image();
         binImage.id = toDoObject.id
         binImage.src = BinImage
 
-        rightDiv.append(objectDueDateSpan, prioritySpan, binImage)
+        // let editImage = new Image();
+        // editImage.src = EditImage;
 
+        // editImage.addEventListener('click', (e) => {
+        //     DOMCache.taskForm.style.display = 'block'
+        // })
+
+        //appends
+        rightDiv.append(objectDueDateSpan, prioritySpan, binImage)
         toDoDiv.append(leftDiv, rightDiv)
 
         checkbox.addEventListener('change', (e) => {
@@ -128,6 +148,12 @@ export default class DisplayHandler {
             console.log(toDoDiv)
             console.log(project.projectName)
         })
+
+        // log the toDo Object
+        toDoDiv.addEventListener('click', () => {
+            console.log(toDoObject)
+        })
+
         return toDoDiv
     }
 
