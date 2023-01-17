@@ -29,7 +29,7 @@ body {
 }
 
 ul li {
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid #ffffff;
     line-height: 2.2em;
 }
 
@@ -38,7 +38,11 @@ ul li:hover {
 }
 
 ul li:active {
-    background-color: rgb(94, 94, 94);
+    background-color: #5e5e5e;
+}
+
+.li-active-color{
+    background-color: red;
 }
 
 #content-wrapper {

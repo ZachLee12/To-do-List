@@ -4,6 +4,8 @@ import EditImage from './assets/images/editing.png'
 import { format } from 'date-fns';
 
 export default class DisplayHandler {
+    static liElementList = []
+
     static initHomeElement(homeElement, projectController) {
         homeElement.addEventListener('click', () => {
             this.resetContentDisplay();
@@ -143,7 +145,7 @@ export default class DisplayHandler {
             projectController.addProjectToStorage(project)
         })
         objectDueDateSpan.addEventListener('click', () => {
-            objectTitleSpan.innerText = editToDoTitle.value            
+            objectTitleSpan.innerText = editToDoTitle.value
             objectTitleSpan.append(editToDoTitle)
 
             editDueDateInput.style.display = 'block'
@@ -178,7 +180,7 @@ export default class DisplayHandler {
             editPriorityInput.style.display = 'none'
         })
         prioritySpan.addEventListener('click', () => {
-            objectTitleSpan.innerText = editToDoTitle.value            
+            objectTitleSpan.innerText = editToDoTitle.value
             objectTitleSpan.append(editToDoTitle)
 
             editDueDateInput.style.display = 'none'
@@ -276,6 +278,17 @@ export default class DisplayHandler {
             projectController.removeFromStorageList(project)
         })
         li.append(deleteButton)
+
+        li.addEventListener('click', () => {
+            this.liElementList.forEach((element) => {
+                element.classList.remove('li-active-color')
+            })
+
+            li.classList.add('li-active-color')
+            console.log(li)
+        })
+
+        this.liElementList.push(li)
         return li
     }
 
