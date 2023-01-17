@@ -39,7 +39,7 @@ body {
     overflow-y: auto;
 }
 
-ul li {
+ul li.nav-li-element {
     line-height: 2.2em;
     transition: all 250ms ease-in-out;
     color: whitesmoke;
@@ -49,13 +49,13 @@ ul li {
     width: 80%;
 }
 
-ul li:hover {
+ul li.nav-li-element:hover {
     background-color: #6bc0d8;
     color: black;
     transform: scale(1.03)
 }
 
-ul li:active {
+ul li.nav-li-element:active {
     background-color: #5ea4b8;
     color: black;
 }
@@ -198,6 +198,7 @@ li img.delete-project {
     flex: 1 1 0;
 }
 
+/* TODO RIGHT DIV */
 .right-div img {
     width: 20px;
     transition: all 300ms ease-in-out;
@@ -207,9 +208,34 @@ li img.delete-project {
     transform: scale(1.2);
 }
 
+.right-div .edit-priority-menu {
+    position: absolute;
+    width: 100px;
+    background-color: #73a8d1;
+    font-size: 0.8em;
+}
+
 .new-task-button-wrapper {
     display: grid;
     justify-content: center;
+}
+
+.edit-priority-menu:hover .priority-option {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.priority-option{
+    transition: max-height 300ms ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+}
+
+.priority-option:hover {
+    background-color: #1dd3dd;
+}
+
+.priority-option:active {
+    background-color: #2bc4cd;
 }
 
 #new-task-button {
@@ -316,7 +342,7 @@ li img.delete-project {
     background-color: #29f4ff;
 }
 
-#add-project:active  {
+#add-project:active {
     background-color: #1dd3dd;
 }
 

@@ -118,7 +118,7 @@ export default class DisplayHandler {
             objectTitleSpan.append(editToDoTitle)
             editDueDateInput.style.display = 'none'
             editToDoTitle.style.display = 'block'
-            editPriorityInput.style.display = 'none'
+            // editPriorityInput.style.display = 'none'
             editToDoTitle.select();
         })
         objectTitleSpan.append(editToDoTitle)
@@ -163,54 +163,49 @@ export default class DisplayHandler {
                 editDueDateInput.style.display = 'block'
             }
             editToDoTitle.style.display = 'none'
-            editPriorityInput.style.display = 'none'
+            // editPriorityInput.style.display = 'none'
         })
         objectDueDateSpan.append(editDueDateInput)
 
         //PRIORITY
         let prioritySpan = document.createElement('span')
         prioritySpan.innerHTML = toDoObject.priority
+        prioritySpan.className = 'priority-span'
 
-        let editPriorityInput = document.createElement('select')
-        editPriorityInput.style.display = 'none'
-        editPriorityInput.className = 'edit-priority'
-
-        const priorityOptions = [
-            { value: "No Priority", text: "No Priority" },
-            { value: "Low", text: "Low" },
-            { value: "Medium", text: "Medium" },
-            { value: "High", text: "High" },
-        ]
-        priorityOptions.forEach((item) => {
-            let option = document.createElement('option')
-            option.value = item.value;
-            option.text = item.text;
-            editPriorityInput.append(option)
+        let activatePriorityMenu = document.createElement('div')
+        activatePriorityMenu.className = 'activate-priority-menu'
+        let editPriorityMenu = document.createElement('ul')
+        editPriorityMenu.className = 'edit-priority-menu'
+        editPriorityMenu.innerText = 'Change Priority'
+        // editPriorityMenu.style.display = 'none'
+        let priorityOptions = ['No Priority', 'Low', 'Medium', 'High']
+        let optionElements = []
+        priorityOptions.forEach((option) => {
+            let li = document.createElement('li')
+            li.innerText = option
+            li.className = 'priority-option'
+            // li.style.display = 'none'
+            editPriorityMenu.append(li)
+            optionElements.push(li)
+        })
+        //event listener for editPriorityMenu
+        editPriorityMenu.addEventListener('mouseover', () => {
+            optionElements.forEach((element) => {
+                element.style.display = 'block'
+            })
         })
 
-        editPriorityInput.value = toDoObject.priority
-        editPriorityInput.addEventListener('change', () => {
-            prioritySpan.innerHTML = editPriorityInput.value
-            prioritySpan.append(editPriorityInput)
-            toDoObject.priority = editPriorityInput.value
-            projectController.addProjectToStorage(project)
-            editPriorityInput.style.display = 'none'
+        editPriorityMenu.addEventListener('mouseout', () => {
+            optionElements.forEach((element) => {
+                // element.style.display = 'none'
+            })
         })
+
+        //event listener for prioritySpan
+        prioritySpan.append(editPriorityMenu);
         prioritySpan.addEventListener('click', () => {
-            objectTitleSpan.innerText = editToDoTitle.value
-            objectTitleSpan.append(editToDoTitle)
-
-            editDueDateInput.style.display = 'none'
-            editToDoTitle.style.display = 'none'
-
-            if (editPriorityInput.style.display === 'block') {
-                editPriorityInput.style.display = 'none'
-            } else {
-                editPriorityInput.style.display = 'block'
-            }
+            editPriorityMenu.style.display = 'block'
         })
-        prioritySpan.append(editPriorityInput)
-
 
         let binImage = new Image();
         binImage.id = toDoObject.id
@@ -285,6 +280,7 @@ export default class DisplayHandler {
         let li = document.createElement('li')
         li.innerHTML = project.getProjectName
         li.id = project.getProjectId
+        li.className = 'nav-li-element'
         let deleteButton = document.createElement('img')
         deleteButton.src = CrossImage
         deleteButton.className = 'delete-project'
