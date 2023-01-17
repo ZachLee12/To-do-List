@@ -109,7 +109,9 @@ export default class DisplayHandler {
         objectTitleSpan.addEventListener('click', () => {
             objectTitleSpan.innerText = ''
             objectTitleSpan.append(editToDoTitle)
+            editDueDateInput.style.display = 'none'
             editToDoTitle.style.display = 'block'
+            editPriorityInput.style.display = 'none'
             editToDoTitle.select();
         })
         objectTitleSpan.append(editToDoTitle)
@@ -141,7 +143,12 @@ export default class DisplayHandler {
             projectController.addProjectToStorage(project)
         })
         objectDueDateSpan.addEventListener('click', () => {
+            objectTitleSpan.innerText = editToDoTitle.value            
+            objectTitleSpan.append(editToDoTitle)
+
             editDueDateInput.style.display = 'block'
+            editToDoTitle.style.display = 'none'
+            editPriorityInput.style.display = 'none'
         })
         objectDueDateSpan.append(editDueDateInput)
 
@@ -171,6 +178,11 @@ export default class DisplayHandler {
             editPriorityInput.style.display = 'none'
         })
         prioritySpan.addEventListener('click', () => {
+            objectTitleSpan.innerText = editToDoTitle.value            
+            objectTitleSpan.append(editToDoTitle)
+
+            editDueDateInput.style.display = 'none'
+            editToDoTitle.style.display = 'none'
             editPriorityInput.style.display = 'block'
         })
         prioritySpan.append(editPriorityInput)
@@ -180,14 +192,6 @@ export default class DisplayHandler {
         binImage.id = toDoObject.id
         binImage.src = BinImage
 
-        // let editImage = new Image();
-        // editImage.src = EditImage;
-
-        // editImage.addEventListener('click', (e) => {
-        //     DOMCache.taskForm.style.display = 'block'
-        // })
-
-        //appends
         rightDiv.append(objectDueDateSpan, prioritySpan, binImage)
         toDoDiv.append(leftDiv, rightDiv)
 
