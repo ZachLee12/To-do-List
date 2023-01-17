@@ -94,6 +94,8 @@ export default class DisplayHandler {
 
         let leftDiv = document.createElement('div')
         leftDiv.className = 'left-div'
+
+        //TITLE
         let objectTitleSpan = document.createElement('span')
         objectTitleSpan.innerHTML = toDoObject.title
         let editToDoTitle = document.createElement('input')
@@ -135,6 +137,8 @@ export default class DisplayHandler {
 
         let rightDiv = document.createElement('div')
         rightDiv.className = 'right-div'
+
+        //DUE DATE
         let objectDueDateSpan = document.createElement('span')
         let dueDateObject = new Date(Date.parse(toDoObject.dueDate))
         objectDueDateSpan.innerHTML = format(dueDateObject, 'dd-MMM-yyyy')
@@ -144,19 +148,15 @@ export default class DisplayHandler {
         editDueDateInput.value = toDoObject.dueDate
         editDueDateInput.style.display = 'none'
         editDueDateInput.addEventListener('change', (e) => {
-            objectDueDateSpan.innerHTML = editDueDateInput.value
             editDueDateInput.style.display = 'none'
-            //this is a little clumsy, find a better way in the future
-            objectDueDateSpan.append(editDueDateInput) // append again, because previous line deletes this editInput
             let editDueDateObject = new Date(Date.parse(editDueDateInput.value))
             objectDueDateSpan.innerHTML = format(editDueDateObject, 'dd-MMM-yyyy')
             toDoObject.dueDate = editDueDateInput.value
             projectController.addProjectToStorage(project)
+            //this is a little clumsy, find a better way in the future
+            objectDueDateSpan.append(editDueDateInput) // append again, because previous line deletes this editInput
         })
         objectDueDateSpan.addEventListener('click', () => {
-            objectTitleSpan.innerText = editToDoTitle.value
-            objectTitleSpan.append(editToDoTitle)
-
             if (editDueDateInput.style.display === 'block') {
                 editDueDateInput.style.display = 'none'
             } else {
@@ -167,6 +167,7 @@ export default class DisplayHandler {
         })
         objectDueDateSpan.append(editDueDateInput)
 
+        //PRIORITY
         let prioritySpan = document.createElement('span')
         prioritySpan.innerHTML = toDoObject.priority
 
@@ -230,10 +231,6 @@ export default class DisplayHandler {
             projectController.addProjectToStorage(project)
         })
 
-        // log the toDo Object
-        toDoDiv.addEventListener('click', () => {
-            console.log(toDoObject)
-        })
         return toDoDiv
     }
 

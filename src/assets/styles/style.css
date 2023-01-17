@@ -44,16 +44,19 @@ ul li {
 }
 
 ul li:hover {
-    background-color: #9d9c9c;
+    background-color: #6bc0d8;
+    color: black;
     transform: scale(1.03)
 }
 
 ul li:active {
-    background-color: #969696;
+    background-color: #5ea4b8;
+    color: black;
 }
 
 .li-active-color {
-    background-color: #b1aeae;
+    background-color: #32a3c2;
+    color: black;
 }
 
 li img.delete-project {
@@ -129,7 +132,7 @@ li img.delete-project {
 }
 
 .to-do:hover {
-    background-color: #90dde2;
+    background-color: #6dcdd4;
 }
 
 .to-do .left-div {
@@ -137,11 +140,14 @@ li img.delete-project {
     grid-template: 1fr / 0.2fr 1fr 1fr;
 }
 
-.left-div, .right-div{
+.left-div,
+.right-div {
     position: relative;
 }
 
-.edit-to-do-title, .edit-priority, .edit-due-date{
+.edit-to-do-title,
+.edit-priority,
+.edit-due-date {
     position: absolute;
 }
 
