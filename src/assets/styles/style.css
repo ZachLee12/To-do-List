@@ -176,8 +176,13 @@ li img.delete-project {
     flex: 1 1 0;
 }
 
-.to-do img {
-    width: 15px;
+.right-div img {
+    width: 20px;
+    transition: all 300ms ease-in-out;
+}
+
+.right-div img:hover{
+    transform: scale(1.2);
 }
 
 
@@ -206,11 +211,12 @@ li img.delete-project {
 
 .strike-through:before {
     content: " ";
+    z-index: 1;
     position: absolute;
     top: 50%;
-    left: min(7%, 50px);
+    left: min(8%, 60px);
     border-bottom: 2px solid #111;
-    width: calc(100% - 75px);
+    width: calc(100% - 115px);
 }
 
 /* MODAL */
