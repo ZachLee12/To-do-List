@@ -380,3 +380,19 @@ li img.delete-project {
     width: 80%;
     /* Could be more or less, depending on screen size */
 }
+
+/* SCROLL BARR */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #788aa0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #5f94d5;
+    border: 2px solid #535252;
+    border-radius: 10px;
+}
