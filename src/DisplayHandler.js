@@ -1,6 +1,9 @@
 import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
+import CrossImage from './assets/images/cross.png'
+import CrossActiveImage from './assets/images/cross-active.png'
 import { format } from 'date-fns';
+import { de } from 'date-fns/locale';
 
 export default class DisplayHandler {
     static liElementList = [DOMCache.homeTab, DOMCache.todayTab, DOMCache.thisWeekTab]
@@ -269,22 +272,39 @@ export default class DisplayHandler {
         let li = document.createElement('li')
         li.innerHTML = project.getProjectName
         li.id = project.getProjectId
-        let deleteButton = document.createElement('button')
-        deleteButton.innerHTML = 'X'
+        let deleteButton = document.createElement('img')
+        deleteButton.src = CrossImage
+        deleteButton.className = 'delete-project'
+        deleteButton.style.visibility = 'hidden'
         deleteButton.addEventListener('click', () => {
             li.remove();
             projectController.removeFromProjectList(project.id)
             projectController.removeFromStorageList(project)
         })
-        li.append(deleteButton)
 
+        deleteButton.addEventListener('mouseover', () => {
+            deleteButton.src = CrossActiveImage
+        })
+
+        deleteButton.addEventListener('mouseout', () => {
+            deleteButton.src = CrossImage
+        })
+
+        li.append(deleteButton)
         li.addEventListener('click', () => {
             this.liElementList.forEach((element) => {
                 element.classList.remove('li-active-color')
             })
-
             li.classList.add('li-active-color')
-            console.log(li)
+        })
+
+        li.addEventListener('mouseover', () => {
+            deleteButton.style.visibility = 'visible'
+            deleteButton.style.opacity = 1;
+        })
+        li.addEventListener('mouseout', () => {
+            deleteButton.style.visibility = 'hidden'
+            deleteButton.style.opacity = 0;
         })
 
         this.liElementList.push(li)

@@ -29,25 +29,81 @@ body {
     padding: 10px;
     background-color: #657086;
     width: 340px;
+    display: flex;
+    flex-direction: column;
+    border-right: 4px solid white;
 }
 
 ul li {
-    border: 2px solid #ffffff;
     line-height: 2.2em;
+    transition: all 400ms ease-in-out;
+    color: whitesmoke;
+    padding-left: 25px;
+    font-size: 1.3em;
+    position: relative;
 }
 
 ul li:hover {
-    background-color: #888;
+    background-color: #9d9c9c;
+    transform: scale(1.03)
 }
 
 ul li:active {
-    background-color: #5e5e5e;
+    background-color: #969696;
 }
 
-.li-active-color{
-    background-color: red;
+.li-active-color {
+    background-color: #b1aeae;
 }
 
+li img.delete-project {
+    position: absolute;
+    right: 20px;
+    top: 25%;
+    /*centers the button*/
+    background-color: transparent;
+    border: none;
+    font-size: 0.8em;
+    transition: all 200ms ease-in-out;
+    width: 20px;
+}
+
+#new-project-button {
+    justify-self: center;
+    align-self: center;
+    margin-top: 20px;
+    height: 30px;
+    width: 140px;
+    border: none;
+    border-radius: 25px;
+    background-color: #8e9eb5;
+    font-size: 1em;
+    color: whitesmoke;
+    transition: all 400ms ease-in-out;
+}
+
+#new-project-button:hover{
+    background-color: #d4d1d1;
+    color: black;
+    transform: scale(1.1);
+}
+
+#new-project-button:active{
+    background-color: #9bb7eb;
+}
+
+#new-project-form {
+    display: none;
+}
+
+
+.projects-word {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: whitesmoke;
+    font-size: 1.8em;
+    padding-left: 5px;
+}
 
 #content-wrapper {
     background-color: gainsboro;
@@ -98,7 +154,8 @@ ul li:active {
     top: 50%;
     left: 20px;
     border-bottom: 2px solid #111;
-    width: calc(100% - 20px - 15px); /*full width - left padding - length of bin img*/
+    width: calc(100% - 20px - 15px);
+    /*full width - left padding - length of bin img*/
 }
 
 /* MODAL */
