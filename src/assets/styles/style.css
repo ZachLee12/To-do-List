@@ -34,6 +34,11 @@ body {
     border-right: 4px solid white;
 }
 
+#project-list {
+    height: 260px;
+    overflow-y: auto;
+}
+
 ul li {
     line-height: 2.2em;
     transition: all 400ms ease-in-out;
@@ -41,6 +46,7 @@ ul li {
     padding-left: 25px;
     font-size: 1.3em;
     position: relative;
+    width: 80%;
 }
 
 ul li:hover {
@@ -74,9 +80,9 @@ li img.delete-project {
 #new-project-button {
     justify-self: center;
     align-self: center;
-    margin-top: 20px;
-    height: 30px;
+    height: 50px;
     width: 140px;
+    margin-top: 20px;
     border: none;
     border-radius: 25px;
     background-color: #8e9eb5;
@@ -97,8 +103,12 @@ li img.delete-project {
 
 #new-project-form {
     display: none;
+    padding: 8px;
+    border: 3px solid #184c73;
+    color: black;
+    background-color: #69b5ef;
+    border-radius: 8px;
 }
-
 
 .projects-word {
     margin-top: 20px;
@@ -106,6 +116,18 @@ li img.delete-project {
     color: whitesmoke;
     font-size: 1.8em;
     padding-left: 5px;
+}
+
+.project-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.2em;
+}
+
+.project-input-wrapper input {
+    font-size: 0.8em;
+    padding-left: 3px;
 }
 
 #content-wrapper {
@@ -205,7 +227,7 @@ li img.delete-project {
     background-color: #38e1ea;
 }
 
-#new-task-button:active{
+#new-task-button:active {
     background-color: #2abac2;
 }
 
@@ -274,10 +296,39 @@ li img.delete-project {
 .form-buttons-wrapper {
     display: flex;
     gap: 20px;
+    margin: 20px;
 }
 
 .form-buttons-wrapper button {
     flex: 1 1 0;
+    height: 30px;
+    font-size: 0.8em;
+    transition: all 400ms ease-in-out;
+    border-radius: 6px;
+}
+
+#add-project {
+    background-color: #1dccd5;
+}
+
+#add-project:hover {
+    background-color: #29f4ff;
+}
+
+#add-project:active  {
+    background-color: #1dd3dd;
+}
+
+#cancel-project {
+    background-color: #d05c5c;
+}
+
+#cancel-project:hover {
+    background-color: #ff7e7e;
+}
+
+#cancel-project:active {
+    background-color: #e05d5d;
 }
 
 
