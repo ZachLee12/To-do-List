@@ -92,6 +92,28 @@ export default class DisplayHandler {
         let leftDiv = document.createElement('div')
         let objectTitleSpan = document.createElement('span')
         objectTitleSpan.innerHTML = toDoObject.title
+        let editToDoTitle = document.createElement('input')
+        editToDoTitle.type = 'text'
+        editToDoTitle.value = toDoObject.title
+        editToDoTitle.style.display = 'none'
+        editToDoTitle.addEventListener('change', () => {
+            if (editToDoTitle.value === "") {
+                editToDoTitle.value = 'No Title'
+            }
+            objectTitleSpan.innerHTML = editToDoTitle.value
+            toDoObject.title = editToDoTitle.value
+            projectController.addProjectToStorage(project)
+            editToDoTitle.style.display = 'none'
+            objectTitleSpan.append(editToDoTitle)
+        })
+        objectTitleSpan.addEventListener('click', () => {
+            objectTitleSpan.innerText = ''
+            objectTitleSpan.append(editToDoTitle)
+            editToDoTitle.style.display = 'block'
+            editToDoTitle.select();
+        })
+        objectTitleSpan.append(editToDoTitle)
+
         let detailsButton = document.createElement('button')
         detailsButton.textContent = 'Details'
         detailsButton.addEventListener('click', (e) => {
@@ -108,17 +130,51 @@ export default class DisplayHandler {
         objectDueDateSpan.innerHTML = toDoObject.dueDate
         let editDueDateInput = document.createElement('input')
         editDueDateInput.type = 'date'
+        editDueDateInput.value = toDoObject.dueDate
+        editDueDateInput.style.display = 'none'
         editDueDateInput.addEventListener('change', (e) => {
             objectDueDateSpan.innerHTML = editDueDateInput.value
+            editDueDateInput.style.display = 'none'
+            //this is a little clumsy, find a better way in the future
+            objectDueDateSpan.append(editDueDateInput) // append again, because previous line deletes this editInput
             toDoObject.dueDate = editDueDateInput.value
             projectController.addProjectToStorage(project)
+        })
+        objectDueDateSpan.addEventListener('click', () => {
+            editDueDateInput.style.display = 'block'
         })
         objectDueDateSpan.append(editDueDateInput)
 
         let prioritySpan = document.createElement('span')
         prioritySpan.innerHTML = toDoObject.priority
 
-        let editPriorityInput = document.createElement('input')
+        let editPriorityInput = document.createElement('select')
+        editPriorityInput.style.display = 'none'
+        const priorityOptions = [
+            { value: "No Priority", text: "No Priority" },
+            { value: "Low", text: "Low" },
+            { value: "Medium", text: "Medium" },
+            { value: "High", text: "High" },
+        ]
+        priorityOptions.forEach((item) => {
+            let option = document.createElement('option')
+            option.value = item.value;
+            option.text = item.text;
+            editPriorityInput.append(option)
+        })
+        editPriorityInput.value = toDoObject.priority
+        editPriorityInput.addEventListener('change', () => {
+            prioritySpan.innerHTML = editPriorityInput.value
+            prioritySpan.append(editPriorityInput)
+            toDoObject.priority = editPriorityInput.value
+            projectController.addProjectToStorage(project)
+            editPriorityInput.style.display = 'none'
+        })
+        prioritySpan.addEventListener('click', () => {
+            editPriorityInput.style.display = 'block'
+        })
+        prioritySpan.append(editPriorityInput)
+
 
         let binImage = new Image();
         binImage.id = toDoObject.id
