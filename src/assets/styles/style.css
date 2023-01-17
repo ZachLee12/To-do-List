@@ -1,5 +1,5 @@
 body {
-    background-color: antiquewhite;
+    background-color: whitesmoke;
     height: 100%;
     box-sizing: border-box;
 }
@@ -20,7 +20,7 @@ body {
 
 .master-container {
     display: flex;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 100px - 10px);
     /* - header height */
     width: 100%;
 }
@@ -82,13 +82,13 @@ li img.delete-project {
     transition: all 400ms ease-in-out;
 }
 
-#new-project-button:hover{
+#new-project-button:hover {
     background-color: #d4d1d1;
     color: black;
     transform: scale(1.1);
 }
 
-#new-project-button:active{
+#new-project-button:active {
     background-color: #9bb7eb;
 }
 
@@ -106,15 +106,79 @@ li img.delete-project {
 }
 
 #content-wrapper {
-    background-color: gainsboro;
+    background-color: #bec2ca;
+    padding: 10px;
     width: 100%;
 }
+
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.to-do {
+    border: 2px solid #539db6;
+    border-radius: 10px;
+    display: flex;
+    font-size: 1.2em;
+    padding: 15px;
+    transition: all 200ms ease-in-out;
+    background-color: #abd6d9;
+    height: 25px;
+}
+
+.to-do:hover {
+    background-color: #90dde2;
+}
+
+.to-do .left-div {
+    display: grid;
+    grid-template: 1fr / 0.2fr 1fr 1fr;
+}
+
+.left-div, .right-div{
+    position: relative;
+}
+
+.edit-to-do-title, .edit-priority, .edit-due-date{
+    position: absolute;
+}
+
+.left-div>button.details-button {
+    width: 100px;
+    height: 25px;
+    font-size: 0.8em;
+    background-color: #739fd9;
+    transition: all 200ms ease-in-out;
+    border: none;
+    border-radius: 5px;
+}
+
+.left-div>button:hover {
+    background-color: #8eafdb;
+}
+
+.to-do .right-div {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: end;
+}
+
+.to-do>* {
+    flex: 1 1 0;
+}
+
+.to-do img {
+    width: 15px;
+}
+
 
 #task-form {
     /* display: none; */
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
     width: 70%;
     margin: auto;
 }
@@ -128,20 +192,6 @@ li img.delete-project {
     flex: 1 1 0;
 }
 
-.to-do {
-    border: 2px solid red;
-    display: flex;
-    justify-content: space-between;
-}
-
-.to-do>* {
-    border: 2px solid blue;
-}
-
-.to-do img {
-    width: 15px;
-}
-
 
 /* When a ToDo is checked */
 .strike-through {
@@ -152,10 +202,9 @@ li img.delete-project {
     content: " ";
     position: absolute;
     top: 50%;
-    left: 20px;
+    left: min(7%, 50px);
     border-bottom: 2px solid #111;
-    width: calc(100% - 20px - 15px);
-    /*full width - left padding - length of bin img*/
+    width: calc(100% - 75px);
 }
 
 /* MODAL */
