@@ -5,15 +5,17 @@ body {
 }
 
 .header {
-    background-color: aquamarine;
+    background-color: #3f485a;
     height: 100px;
     display: grid;
     align-content: center;
     justify-content: center;
+    border-bottom: 5px solid white;
 }
 
 .header-title {
     font-size: 2em;
+    color: whitesmoke
 }
 
 .master-container {
@@ -24,8 +26,9 @@ body {
 }
 
 .nav {
-    background-color: blueviolet;
-    width: 350px;
+    padding: 10px;
+    background-color: #657086;
+    width: 340px;
 }
 
 ul li {
@@ -44,6 +47,7 @@ ul li:active {
 .li-active-color{
     background-color: red;
 }
+
 
 #content-wrapper {
     background-color: gainsboro;

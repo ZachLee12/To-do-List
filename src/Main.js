@@ -92,6 +92,18 @@ const initalizeFormButtons = (function () {
 })();
 
 
+//a bit complex, try to find a better way
+const initializeNavTabs = (function () {
+    DisplayHandler.liElementList.forEach((navTabs) => {
+        navTabs.addEventListener('click', (event) => {
+            DisplayHandler.liElementList.forEach((tabs) => {
+                tabs.classList.remove('li-active-color');
+            })
+            navTabs.classList.add('li-active-color');
+        })
+    })
+})();
+
 
 
 

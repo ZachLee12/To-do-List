@@ -1,10 +1,9 @@
 import DOMCache from './DOMCache'
 import BinImage from './assets/images/bin.png'
-import EditImage from './assets/images/editing.png'
 import { format } from 'date-fns';
 
 export default class DisplayHandler {
-    static liElementList = []
+    static liElementList = [DOMCache.homeTab, DOMCache.todayTab, DOMCache.thisWeekTab]
 
     static initHomeElement(homeElement, projectController) {
         homeElement.addEventListener('click', () => {
