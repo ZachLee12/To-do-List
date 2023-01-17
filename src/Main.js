@@ -21,7 +21,7 @@ const initalizeFormButtons = (function () {
     DOMCache.homeTab.addEventListener('click', hideTaskFunctions)
     DOMCache.todayTab.addEventListener('click', hideTaskFunctions)
     DOMCache.thisWeekTab.addEventListener('click', hideTaskFunctions)
-    
+
     //Add New Project Form functions
     DOMCache.addProjectButton.addEventListener('click', addProjectFunction)
     DOMCache.newProjectButton.addEventListener('click', newProjectFunction)
@@ -38,18 +38,20 @@ const initalizeFormButtons = (function () {
     }
 
     function addProjectFunction() {
-        if (DOMCache.projectForm.reportValidity()) {
-
-            DOMCache.projectForm.style.display = 'none'
-            DOMCache.newProjectButton.style.display = 'block'
-            let newProject = new Project(DOMCache.projectName.value)
-            let newLiElement = DisplayHandler.renderNewProjectLiElement(newProject, projectController);
-            DisplayHandler.initNavElement(newLiElement, newProject, projectController)
-
-            //remember to add the project to the list of projects!!
-            projectController.addToProjectList(newProject)
-            projectController.addProjectToStorage(newProject)
+        if (!DOMCache.projectForm.reportValidity()) {
+            return
         }
+
+        DOMCache.projectForm.style.display = 'none'
+        DOMCache.newProjectButton.style.display = 'block'
+        let newProject = new Project(DOMCache.projectName.value)
+        let newLiElement = DisplayHandler.renderNewProjectLiElement(newProject, projectController);
+        DisplayHandler.initNavElement(newLiElement, newProject, projectController)
+
+        //remember to add the project to the list of projects!!
+        projectController.addToProjectList(newProject)
+        projectController.addProjectToStorage(newProject)
+
     }
 
     function cancelProjectFunction() {
@@ -63,6 +65,10 @@ const initalizeFormButtons = (function () {
     }
 
     function addButtonFunction() {
+        if (!DOMCache.taskForm.reportValidity()) {
+            return
+        }
+
         DOMCache.taskForm.style.display = 'none'
         DOMCache.newTaskButton.style.display = 'block'
         let newToDo = Project.createToDo(DOMCache.title.value, DOMCache.description.value, DOMCache.dueDate.value, DOMCache.priority.value)
