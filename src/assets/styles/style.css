@@ -222,8 +222,16 @@ li img.delete-project {
 
 .activate-priority-menu {
     display: none;
-    background-color: #22689e;
+    background-color: #27a8c2;
     position: absolute;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.change-priority-text {
+    font-weight: 600;
+    position: relative;
+    bottom: 4px;
 }
 
 .activate-priority-menu:hover .priority-option {
@@ -233,11 +241,13 @@ li img.delete-project {
 
 .priority-option {
     display: none;
+    transition: all 300ms ease-in-out;
 }
 
 .priority-option:hover {
-    background-color: #1dd3dd;
+    background-color: #1aebb0;
     display: block;
+    transform: scale(1.07);
 }
 
 .priority-option:active {

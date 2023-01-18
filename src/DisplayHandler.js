@@ -175,7 +175,10 @@ export default class DisplayHandler {
 
         let activatePriorityMenu = document.createElement('div')
         activatePriorityMenu.className = 'activate-priority-menu'
-        activatePriorityMenu.innerText = 'Change Priority'
+        let changePriorityText = document.createElement('p')
+        changePriorityText.className = 'change-priority-text'
+        changePriorityText.innerText = 'Change Priority'
+        activatePriorityMenu.appendChild(changePriorityText)
         prioritySpan.append(activatePriorityMenu);
 
         let priorityOptions = ['No Priority', 'Low', 'Medium', 'High']
