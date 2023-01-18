@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-List</title>
+<script defer src="main.js"></script></head>
+
+<body>
+    <header class="header">
+        <p class="header-title">My To-Do-List</p>
+    </header>
+
+    <div class="master-container">
+        <nav class="nav">
+            <ul id="nav-tabs-list">
+                <li id="home" class="nav-li-element">Home</li>
+                <li id="today" class="nav-li-element">Today</li>
+                <li id="this-week" class="nav-li-element">This Week</li>
+            </ul>
+            <p class="projects-word">Projects</p>
+            <ul id="project-list">
+
+            </ul>
+
+            <form action="" onsubmit="return false" id="new-project-form">
+                <div class="project-input-wrapper">
+                    <label for="project-name">Project Name:</label>
+                    <input type="text" name="project-name" id="project-name" required>
+                </div>
+                <nav class="form-buttons-wrapper">
+                    <button type="button" id="add-project">Add</button>
+                    <button type="button" id="cancel-project">Cancel</button>
+                </nav>
+            </form>
+            <button id="new-project-button">New Project</button>
+
+        </nav>
+        <div id='content-wrapper'>
+            <div id='content'></div>
+            <form action="" onsubmit="return false" id="task-form">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" style="resize:none"></textarea>
+                </div>
+                <div>
+                    <label for="dueDate">Due Date</label>
+                    <input type="date" name="dueDate" id="due-date" required>
+                </div>
+                <div>
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority">
+                        <option value="No Priority" selected>No Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <nav class="form-buttons-wrapper">
+                    <button type="button" id="add-button">Add</button>
+                    <button type="button" id="cancel-button">Cancel</button>
+                </nav>
+            </form>
+            <div class="new-task-button-wrapper">
+                <button id="new-task-button">New Task</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
