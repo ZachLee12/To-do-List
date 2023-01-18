@@ -431,7 +431,34 @@ li img.delete-project {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
+    background-color: #27a8c2;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-modal-button {   
+    width: 100px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-size: 0.85em;
+}
+
+.close-modal-button {
+    background-color: #d05c5c;
+}
+
+.close-modal-button:hover {
+    background-color: #ff7e7e;
+}
+
+.close-modal-button:active {
+    background-color: #e05d5d;
 }
 
 /* SCROLL BARR */

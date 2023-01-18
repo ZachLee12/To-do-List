@@ -244,6 +244,7 @@ export default class DisplayHandler {
         modalContent.textContent = toDoObject.description
         let closeButton = document.createElement('button')
         closeButton.innerText = 'Close'
+        closeButton.className = 'close-modal-button'
         closeButton.addEventListener('click', () => {
             modalWrapper.style.display = 'none'
         })
