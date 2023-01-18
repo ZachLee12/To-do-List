@@ -163,6 +163,7 @@ export default class DisplayHandler {
                 editDueDateInput.style.display = 'block'
             }
             editToDoTitle.style.display = 'none'
+            objectTitleSpan.innerText = editToDoTitle.value
             activatePriorityMenu.style.display = 'none'
         })
         objectDueDateSpan.append(editDueDateInput)
@@ -202,6 +203,10 @@ export default class DisplayHandler {
             } else {
                 activatePriorityMenu.style.display = 'block'
             }
+
+            editToDoTitle.style.display = 'none'
+            objectTitleSpan.innerText = editToDoTitle.value
+            editDueDateInput.style.display = 'none'
         })
 
         let binImage = new Image();
