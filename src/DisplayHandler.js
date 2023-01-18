@@ -174,35 +174,20 @@ export default class DisplayHandler {
 
         let activatePriorityMenu = document.createElement('div')
         activatePriorityMenu.className = 'activate-priority-menu'
-        let editPriorityMenu = document.createElement('ul')
-        editPriorityMenu.className = 'edit-priority-menu'
-        editPriorityMenu.innerText = 'Change Priority'
-        // editPriorityMenu.style.display = 'none'
+        activatePriorityMenu.innerText = 'Change Priority'
+        prioritySpan.append(activatePriorityMenu);
+
         let priorityOptions = ['No Priority', 'Low', 'Medium', 'High']
         let optionElements = []
         priorityOptions.forEach((option) => {
-            let li = document.createElement('li')
-            li.innerText = option
-            li.className = 'priority-option'
-            // li.style.display = 'none'
-            editPriorityMenu.append(li)
-            optionElements.push(li)
-        })
-        //event listener for editPriorityMenu
-        editPriorityMenu.addEventListener('mouseover', () => {
-            optionElements.forEach((element) => {
-                element.style.display = 'block'
-            })
-        })
-
-        editPriorityMenu.addEventListener('mouseout', () => {
-            optionElements.forEach((element) => {
-                // element.style.display = 'none'
-            })
+            let div = document.createElement('div')
+            div.innerText = option
+            div.className = 'priority-option'
+            activatePriorityMenu.append(div)
+            optionElements.push(div)
         })
 
         //event listener for prioritySpan
-        prioritySpan.append(editPriorityMenu);
         prioritySpan.addEventListener('click', () => {
             editPriorityMenu.style.display = 'block'
         })

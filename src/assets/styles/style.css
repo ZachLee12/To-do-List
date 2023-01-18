@@ -220,18 +220,21 @@ li img.delete-project {
     justify-content: center;
 }
 
-.edit-priority-menu:hover .priority-option {
-    max-height: 200px;
-    opacity: 1;
+.activate-priority-menu {
+    background-color: #22689e;
 }
 
-.priority-option{
-    transition: max-height 300ms ease-out, opacity 0.5s ease-out;
-    opacity: 0;
+.activate-priority-menu:hover .priority-option {
+    display: block;
+}
+
+.priority-option {
+    display: none;
 }
 
 .priority-option:hover {
     background-color: #1dd3dd;
+    display: block;
 }
 
 .priority-option:active {
