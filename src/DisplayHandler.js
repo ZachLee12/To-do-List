@@ -118,7 +118,7 @@ export default class DisplayHandler {
             objectTitleSpan.append(editToDoTitle)
             editDueDateInput.style.display = 'none'
             editToDoTitle.style.display = 'block'
-            // editPriorityInput.style.display = 'none'
+            activatePriorityMenu.style.display = 'none'
             editToDoTitle.select();
         })
         objectTitleSpan.append(editToDoTitle)
@@ -163,7 +163,7 @@ export default class DisplayHandler {
                 editDueDateInput.style.display = 'block'
             }
             editToDoTitle.style.display = 'none'
-            // editPriorityInput.style.display = 'none'
+            activatePriorityMenu.style.display = 'none'
         })
         objectDueDateSpan.append(editDueDateInput)
 
@@ -179,7 +179,7 @@ export default class DisplayHandler {
 
         let priorityOptions = ['No Priority', 'Low', 'Medium', 'High']
         let optionElements = []
-        priorityOptions.forEach((option) => {
+        priorityOptions.forEach((option, index) => {
             let div = document.createElement('div')
             div.innerText = option
             div.className = 'priority-option'
@@ -187,9 +187,21 @@ export default class DisplayHandler {
             optionElements.push(div)
         })
 
-        //event listener for prioritySpan
+        optionElements.forEach(element => {
+            element.addEventListener('click', () => {
+                toDoObject.priority = element.innerText;
+                prioritySpan.innerText = element.innerText;
+                prioritySpan.append(activatePriorityMenu)
+                projectController.addProjectToStorage(project)
+            })
+        })
+
         prioritySpan.addEventListener('click', () => {
-            editPriorityMenu.style.display = 'block'
+            if (activatePriorityMenu.style.display === 'block') {
+                activatePriorityMenu.style.display = 'none'
+            } else {
+                activatePriorityMenu.style.display = 'block'
+            }
         })
 
         let binImage = new Image();

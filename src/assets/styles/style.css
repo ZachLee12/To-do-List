@@ -221,11 +221,14 @@ li img.delete-project {
 }
 
 .activate-priority-menu {
+    display: none;
     background-color: #22689e;
+    position: absolute;
 }
 
 .activate-priority-menu:hover .priority-option {
     display: block;
+    animation: fade-in 450ms ease-in-out;
 }
 
 .priority-option {
@@ -239,6 +242,16 @@ li img.delete-project {
 
 .priority-option:active {
     background-color: #2bc4cd;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 #new-task-button {
