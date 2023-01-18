@@ -226,6 +226,7 @@ li img.delete-project {
     position: absolute;
     padding: 5px;
     border-radius: 5px;
+    z-index: 2;
 }
 
 .change-priority-text {
