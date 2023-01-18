@@ -85,12 +85,20 @@ export default class DisplayHandler {
 
     //creates a div for a toDoObject, with all the input functions set
     static createToDoHTMLDiv(toDoObject, project, projectController) {
-        let checkbox = document.createElement('input')
-        checkbox.type = 'checkbox'
-
         let toDoDiv = document.createElement('div')
         toDoDiv.className = 'to-do'
         toDoDiv.id = toDoObject.id
+
+        let checkbox = document.createElement('input')
+        checkbox.type = 'checkbox'
+        if (toDoObject.toDoFinished) {
+            checkbox.checked = true;
+            toDoDiv.classList.add('strike-through')
+
+        } else {
+            checkbox.checked = false;
+            toDoDiv.classList.remove('strike-through')
+        }
 
         let leftDiv = document.createElement('div')
         leftDiv.className = 'left-div'
@@ -219,16 +227,26 @@ export default class DisplayHandler {
         rightDiv.append(objectDueDateSpan, prioritySpan, binImage)
         toDoDiv.append(leftDiv, rightDiv)
 
-        checkbox.addEventListener('change', (e) => {
-            e.target.checked
-                ? toDoDiv.classList.add('strike-through')
-                : toDoDiv.classList.remove('strike-through')
+        checkbox.addEventListener('click', (e) => {
+            if (e.target.checked) {
+                toDoDiv.classList.add('strike-through')
+                toDoObject.toDoFinished = true;
+            } else {
+                toDoDiv.classList.remove('strike-through')
+                toDoObject.toDoFinished = false;
+            }
+            console.log(e.target.checked)
+            projectController.addProjectToStorage(project)
         })
 
         binImage.addEventListener('click', (e) => {
             toDoDiv.remove();
             project.removeFromList(toDoObject.id)
             projectController.addProjectToStorage(project)
+        })
+
+        toDoDiv.addEventListener('click', () => {
+            console.log(toDoObject)
         })
 
         return toDoDiv

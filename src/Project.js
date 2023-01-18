@@ -38,8 +38,8 @@ export default class Project {
     }
 
     //a static method just for creating a ToDo
-    static createToDo(title, description, dueDate, priority) {
-        return new ToDo(title, description, dueDate, priority)
+    static createToDo(title, description, dueDate, priority, toDoFinished) {
+        return new ToDo(title, description, dueDate, priority, toDoFinished)
     }
 
 }

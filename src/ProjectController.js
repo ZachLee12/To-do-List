@@ -11,7 +11,7 @@ export default class ProjectController {
             let newProject = new Project(object.projectName)
             // newProject.setTodoList = object.toDoList //NO!!!!!
             object.toDoList.forEach(toDo => {
-                let newToDo = Project.createToDo(toDo.title, toDo.description, toDo.dueDate, toDo.priority)
+                let newToDo = Project.createToDo(toDo.title, toDo.description, toDo.dueDate, toDo.priority, toDo.toDoFinished)
                 newProject.addToList(newToDo)
             })
             this.projectList.push(newProject)
