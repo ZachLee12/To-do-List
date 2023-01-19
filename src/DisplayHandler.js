@@ -276,7 +276,10 @@ export default class DisplayHandler {
 
         let editButton = document.createElement('button')
         editButton.innerText = 'Edit'
-        editButton.className = 'edit-modal-button'
+        editButton.className = 'edit-description-button'
+        let buttonsWrapper = document.createElement('div')
+        buttonsWrapper.className = 'description-buttons-wrapper'
+        buttonsWrapper.append(editButton, closeButton)
         editButton.addEventListener('click', () => {
             if (editDescription.style.display === 'block') {
                 editDescription.style.display = 'none'
@@ -284,16 +287,16 @@ export default class DisplayHandler {
                 modalContent.textContent = editDescription.value;
                 toDoObject.description = editDescription.value;
                 console.log(toDoObject)
-                modalContent.append(editDescription, editButton, closeButton)
+                modalContent.append(editDescription, buttonsWrapper)
                 projectController.addProjectToStorage(project)
             } else {
                 editDescription.style.display = 'block'
                 editButton.innerText = 'Save Edit'
-                modalContent.append(editDescription, editButton, closeButton)
+                modalContent.append(editDescription, buttonsWrapper)
             }
         })
 
-        modalContent.append(editDescription, editButton, closeButton)
+        modalContent.append(editDescription, buttonsWrapper)
         modalWrapper.append(modalContent)
 
         return modalWrapper

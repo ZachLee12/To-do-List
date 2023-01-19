@@ -438,6 +438,28 @@ li img.delete-project {
     /* Black w/ opacity */
 }
 
+.description-buttons-wrapper{
+    display: flex;
+    gap: 20px;
+}
+
+.edit-description-button {
+    width: 100px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-size: 0.85em;
+    background-color:#64a1f6
+}
+
+.edit-description-button:hover {
+    background-color:#80b5ff
+}
+
+.edit-description-button:active {
+    background-color:#6e9ee0
+}
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
