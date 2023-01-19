@@ -245,10 +245,6 @@ export default class DisplayHandler {
             projectController.addProjectToStorage(project)
         })
 
-        toDoDiv.addEventListener('click', () => {
-            console.log(toDoObject)
-        })
-
         return toDoDiv
     }
 
