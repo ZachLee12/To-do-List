@@ -5,6 +5,9 @@ import CrossActiveImage from './assets/images/cross-active.png'
 import { format } from 'date-fns';
 
 export default class DisplayHandler {
+    constructor() {
+        throw new Error('Cannot instantiate static class DisplayHandler')
+    }
     static liElementList = [DOMCache.homeTab, DOMCache.todayTab, DOMCache.thisWeekTab]
 
     static initHomeElement(homeElement, projectController) {

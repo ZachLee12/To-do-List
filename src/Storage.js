@@ -1,4 +1,7 @@
 export default class Storage {
+    constructor() {
+        throw new Error('Cannot instantiate static class Storage')
+    }
 
     static addProject(project) {
         localStorage.setItem(project.projectName, JSON.stringify(project))

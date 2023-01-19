@@ -1,5 +1,8 @@
 //static class, so no constructor()
 export default class DOMCache {
+    constructor() {
+        throw new Error('Cannot instantiated static class DOMCache')
+    }
 
     static mainContent = document.getElementById('content')
     static newTaskButton = document.getElementById('new-task-button')
