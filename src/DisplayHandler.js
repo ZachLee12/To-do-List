@@ -141,7 +141,7 @@ export default class DisplayHandler {
 
         })
 
-        leftDiv.append(checkbox, objectTitleSpan, detailsButton, this.createModal(toDoObject))
+        leftDiv.append(checkbox, objectTitleSpan, detailsButton, this.createModal(project, toDoObject, projectController))
 
         let rightDiv = document.createElement('div')
         rightDiv.className = 'right-div'
@@ -248,7 +248,7 @@ export default class DisplayHandler {
         return toDoDiv
     }
 
-    static createModal(toDoObject) {
+    static createModal(project, toDoObject, projectController) {
         //Description Modal
         let modalWrapper = document.createElement('div')
         modalWrapper.className = 'modal-wrapper'
@@ -256,14 +256,44 @@ export default class DisplayHandler {
         let modalContent = document.createElement('div')
         modalContent.className = 'modal-content'
         modalContent.textContent = toDoObject.description
+
+        let editDescription = document.createElement('textarea')
+        editDescription.className = 'edit-description'
+        editDescription.value = toDoObject.description;
+        editDescription.style.display = 'none'
         let closeButton = document.createElement('button')
         closeButton.innerText = 'Close'
         closeButton.className = 'close-modal-button'
         closeButton.addEventListener('click', () => {
             modalWrapper.style.display = 'none'
+            editDescription.style.display = 'none'
+            editButton.innerText = 'Edit'
+            modalContent.textContent = editDescription.value;
+            modalContent.append(editDescription, editButton, closeButton)
+            toDoObject.description = editDescription.value;
+            projectController.addProjectToStorage(project)
         })
 
-        modalContent.append(closeButton)
+        let editButton = document.createElement('button')
+        editButton.innerText = 'Edit'
+        editButton.className = 'edit-modal-button'
+        editButton.addEventListener('click', () => {
+            if (editDescription.style.display === 'block') {
+                editDescription.style.display = 'none'
+                editButton.innerText = 'Edit'
+                modalContent.textContent = editDescription.value;
+                toDoObject.description = editDescription.value;
+                console.log(toDoObject)
+                modalContent.append(editDescription, editButton, closeButton)
+                projectController.addProjectToStorage(project)
+            } else {
+                editDescription.style.display = 'block'
+                editButton.innerText = 'Save Edit'
+                modalContent.append(editDescription, editButton, closeButton)
+            }
+        })
+
+        modalContent.append(editDescription, editButton, closeButton)
         modalWrapper.append(modalContent)
 
         return modalWrapper

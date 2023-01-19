@@ -112,12 +112,12 @@ li img.delete-project {
 }
 
 @keyframes form-animation-in {
-    0%{
+    0% {
         transform: scale(0);
         opacity: 0;
     }
 
-    100%{
+    100% {
         transform: scale(1);
         opacity: 1;
     }
@@ -457,7 +457,14 @@ li img.delete-project {
     animation: form-animation-in 250ms ease-in-out;
 }
 
-.close-modal-button {   
+textarea.edit-description {
+    width: 80%;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    resize: none;
+}
+
+.close-modal-button {
     width: 100px;
     height: 35px;
     border: 2px solid black;
