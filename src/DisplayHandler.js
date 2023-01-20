@@ -8,7 +8,8 @@ export default class DisplayHandler {
     constructor() {
         throw new Error('Cannot instantiate static class DisplayHandler')
     }
-    static liElementList = [DOMCache.homeTab, DOMCache.todayTab, DOMCache.thisWeekTab]
+    static defaultNavTabList = [DOMCache.homeTab, DOMCache.todayTab, DOMCache.thisWeekTab]
+    static divWrapperElementList = []
 
     static initHomeElement(homeElement, projectController) {
         homeElement.addEventListener('click', () => {
@@ -365,12 +366,14 @@ export default class DisplayHandler {
             deleteButton.src = CrossImage
         })
 
-        // li.append(deleteButton)
-        li.addEventListener('click', () => {
-            this.liElementList.forEach((element) => {
+        divWrapper.addEventListener('click', () => {
+            this.defaultNavTabList.forEach((element) => {
                 element.classList.remove('li-active-color')
             })
-            li.classList.add('li-active-color')
+            this.divWrapperElementList.forEach((element) => {
+                element.classList.remove('li-active-color')
+            })
+            divWrapper.classList.add('li-active-color')
         })
 
         divWrapper.addEventListener('mouseover', () => {
@@ -382,7 +385,7 @@ export default class DisplayHandler {
             deleteButton.style.opacity = 0;
         })
 
-        this.liElementList.push(li)
+        this.divWrapperElementList.push(divWrapper)
         return divWrapper
     }
 
