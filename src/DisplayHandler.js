@@ -273,7 +273,8 @@ export default class DisplayHandler {
             editDescription.style.display = 'none'
             editButton.innerText = 'Edit'
             modalContent.textContent = editDescription.value;
-            modalContent.append(editDescription, editButton, closeButton)
+            buttonsWrapper.append(editButton, closeButton)
+            modalContent.append(editDescription, buttonsWrapper)
             toDoObject.description = editDescription.value;
             projectController.addProjectToStorage(project)
         })
@@ -290,12 +291,13 @@ export default class DisplayHandler {
                 editButton.innerText = 'Edit'
                 modalContent.textContent = editDescription.value;
                 toDoObject.description = editDescription.value;
-                console.log(toDoObject)
+                buttonsWrapper.append(editButton, closeButton)
                 modalContent.append(editDescription, buttonsWrapper)
                 projectController.addProjectToStorage(project)
             } else {
                 editDescription.style.display = 'block'
                 editButton.innerText = 'Save Edit'
+                buttonsWrapper.append(editButton, closeButton)
                 modalContent.append(editDescription, buttonsWrapper)
             }
         })
