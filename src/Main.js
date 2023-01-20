@@ -43,15 +43,15 @@ const initalizeFormButtons = (function () {
         }
 
         DOMCache.projectForm.style.display = 'none'
+        DOMCache.newTaskButton.style.display = 'none'
         DOMCache.newProjectButton.style.display = 'block'
         let newProject = new Project(DOMCache.projectName.value)
-        let newLiElement = DisplayHandler.renderNewProjectLiElement(newProject, projectController);
+        let newLiElement = DisplayHandler.renderNewProjectLiElement(newProject, projectController).children[0];
         DisplayHandler.initNavElement(newLiElement, newProject, projectController)
 
         //remember to add the project to the list of projects!!
         projectController.addToProjectList(newProject)
         projectController.addProjectToStorage(newProject)
-
     }
 
     function cancelProjectFunction() {

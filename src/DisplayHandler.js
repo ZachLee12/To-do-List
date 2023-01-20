@@ -318,8 +318,8 @@ export default class DisplayHandler {
 
     static renderLocalProjects(projectController) {
         projectController.getProjectList.forEach(project => {
-            let newLiElement = this.renderNewProjectLiElement(project, projectController)
-
+            let newLiElement = this.renderNewProjectLiElement(project, projectController).children[0]
+            console.log(newLiElement)
             //initialize element event listener
             this.initNavElement(newLiElement, project, projectController)
         })
@@ -333,18 +333,28 @@ export default class DisplayHandler {
     }
 
     static createProjectLiElement(project, projectController) {
+        let divWrapper = document.createElement('div')
+        divWrapper.className = 'nav-li-element-wrapper'
         let li = document.createElement('li')
         li.innerHTML = project.getProjectName
         li.id = project.getProjectId
         li.className = 'nav-li-element'
+        divWrapper.append(li)
         let deleteButton = document.createElement('img')
         deleteButton.src = CrossImage
         deleteButton.className = 'delete-project'
         deleteButton.style.visibility = 'hidden'
+        divWrapper.append(deleteButton)
         deleteButton.addEventListener('click', () => {
             li.remove();
             projectController.removeFromProjectList(project.id)
             projectController.removeFromStorageList(project)
+            DOMCache.newTaskButton.style.display = 'none'
+            if (project === projectController.getCurrentProject) {
+                DOMCache.mainContent.innerHTML = ''
+            }
+            console.log(project)
+            console.log(projectController.getCurrentProject)
         })
 
         deleteButton.addEventListener('mouseover', () => {
@@ -355,7 +365,7 @@ export default class DisplayHandler {
             deleteButton.src = CrossImage
         })
 
-        li.append(deleteButton)
+        // li.append(deleteButton)
         li.addEventListener('click', () => {
             this.liElementList.forEach((element) => {
                 element.classList.remove('li-active-color')
@@ -363,17 +373,17 @@ export default class DisplayHandler {
             li.classList.add('li-active-color')
         })
 
-        li.addEventListener('mouseover', () => {
+        divWrapper.addEventListener('mouseover', () => {
             deleteButton.style.visibility = 'visible'
             deleteButton.style.opacity = 1;
         })
-        li.addEventListener('mouseout', () => {
+        divWrapper.addEventListener('mouseout', () => {
             deleteButton.style.visibility = 'hidden'
             deleteButton.style.opacity = 0;
         })
 
         this.liElementList.push(li)
-        return li
+        return divWrapper
     }
 
     static resetAddProjectFormValues() {

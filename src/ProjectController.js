@@ -1,5 +1,6 @@
 import Project from "./Project";
 import Storage from "./Storage";
+import DOMCache from "./DOMCache";
 
 //this class controls all Project objects
 export default class ProjectController {
