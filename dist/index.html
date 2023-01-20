@@ -17,11 +17,13 @@
     <div class="master-container">
         <nav class="nav">
             <ul id="nav-tabs-list">
-                <li id="home" class="nav-li-element">Home</li>
-                <li id="today" class="nav-li-element">Today</li>
-                <li id="this-week" class="nav-li-element">This Week</li>
+                <li id="home" class="nav-li-element default-tabs">Home</li>
+                <li id="today" class="nav-li-element default-tabs">Today</li>
+                <li id="this-week" class="nav-li-element default-tabs">This Week</li>
             </ul>
-            <p class="projects-word">Projects</p>
+            <div class="projects-word-wrapper">
+                <p class="projects-word">Projects</p>
+            </div>
             <ul id="project-list">
 
             </ul>
@@ -29,7 +31,7 @@
             <form action="" onsubmit="return false" id="new-project-form">
                 <div class="project-input-wrapper">
                     <label for="project-name">Project Name:</label>
-                    <input type="text" name="project-name" id="project-name" required>
+                    <input type="text" name="project-name" id="project-name" required maxlength="17">
                 </div>
                 <nav class="form-buttons-wrapper">
                     <button type="button" id="add-project">Add</button>
@@ -47,8 +49,10 @@
                     <input type="text" name="title" id="title" required>
                 </div>
                 <div>
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" cols="30" rows="5" style="resize:none"></textarea>
+                    <label for="description">Description (Optional)</label>
+                    <textarea placeholder="Eg: Finalize project with the team..." name="description" id="description"
+                        cols="30" rows="5" style="resize:none">
+                    </textarea>
                 </div>
                 <div>
                     <label for="dueDate">Due Date</label>
