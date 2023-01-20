@@ -6,9 +6,6 @@ import DisplayHandler from './DisplayHandler';
 import Project from './Project';
 import ProjectController from './ProjectController';
 
-//just dummy values to test localStorage
-// localStorage.clear();
-
 //DEFAULTS
 const projectController = new ProjectController()
 DisplayHandler.renderLocalProjects(projectController)
@@ -92,7 +89,7 @@ const initalizeFormButtons = (function () {
 
 })();
 
-//a bit complex, try to find a better way
+
 const initializeNavTabs = (function () {
     DisplayHandler.defaultNavTabList.forEach((navTabs) => {
         navTabs.addEventListener('click', (event) => {

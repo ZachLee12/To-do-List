@@ -52,7 +52,6 @@ export default class DisplayHandler {
     static renderThisWeek(projectController) {
         let oneWeekMillisecond = 7 * 24 * 60 * 60 * 1000; // for 7 days in milliseconds
         let today = new Date();
-
         let todayTime = today.getTime();
         projectController.getProjectList.forEach(project => {
             project.getToDoList.forEach(toDo => {
@@ -146,7 +145,6 @@ export default class DisplayHandler {
         })
 
         leftDiv.append(checkbox, objectTitleSpan, detailsButton, this.createModal(project, toDoObject, projectController))
-
         let rightDiv = document.createElement('div')
         rightDiv.className = 'right-div'
 
@@ -165,7 +163,6 @@ export default class DisplayHandler {
             objectDueDateSpan.innerHTML = format(editDueDateObject, 'dd-MMM-yyyy')
             toDoObject.dueDate = editDueDateInput.value
             projectController.addProjectToStorage(project)
-            //this is a little clumsy, find a better way in the future
             objectDueDateSpan.append(editDueDateInput) // append again, because previous line deletes this editInput
         })
         objectDueDateSpan.addEventListener('click', () => {
@@ -248,7 +245,6 @@ export default class DisplayHandler {
             project.removeFromList(toDoObject.id)
             projectController.addProjectToStorage(project)
         })
-
         return toDoDiv
     }
 
@@ -260,7 +256,6 @@ export default class DisplayHandler {
         let modalContent = document.createElement('div')
         modalContent.className = 'modal-content'
         modalContent.textContent = toDoObject.description
-
         let editDescription = document.createElement('textarea')
         editDescription.className = 'edit-description'
         editDescription.value = toDoObject.description;
@@ -356,8 +351,6 @@ export default class DisplayHandler {
             if (project === projectController.getCurrentProject) {
                 DOMCache.mainContent.innerHTML = ''
             }
-            console.log(project)
-            console.log(projectController.getCurrentProject)
         })
 
         deleteButton.addEventListener('mouseover', () => {
@@ -386,7 +379,6 @@ export default class DisplayHandler {
             deleteButton.style.visibility = 'hidden'
             deleteButton.style.opacity = 0;
         })
-
         this.divWrapperElementList.push(divWrapper)
         return divWrapper
     }

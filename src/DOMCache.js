@@ -1,10 +1,12 @@
-//static class, so no constructor()
+//DOMCache caches all DOM elements needed. Access to the DOM should only be performed here.
 export default class DOMCache {
     constructor() {
         throw new Error('Cannot instantiated static class DOMCache')
     }
-
+    //main content to render all ToDos
     static mainContent = document.getElementById('content')
+
+    //buttons
     static newTaskButton = document.getElementById('new-task-button')
     static taskForm = document.getElementById('task-form')
     static addButton = document.getElementById('add-button')
