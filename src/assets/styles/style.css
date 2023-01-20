@@ -46,6 +46,7 @@ body {
     flex-direction: column;
     border-right: 4px solid white;
     font-family: 'Roboto';
+    user-select: none;
 }
 
 #project-list {
@@ -65,7 +66,7 @@ ul li.nav-li-element {
     padding-left: 25px;
     font-size: 1.3em;
     position: relative;
-    width: 145px;
+    width: 78%;
 }
 
 ul .nav-li-element-wrapper:has(li.nav-li-element:hover) {
