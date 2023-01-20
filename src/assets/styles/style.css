@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'JusticeFest';
+    src: url('../fonts/JusticeFest-8MX1n.otf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+
 body {
     background-color: whitesmoke;
     height: 100%;
@@ -14,8 +24,11 @@ body {
 }
 
 .header-title {
-    font-size: 2em;
-    color: whitesmoke
+    font-size: 4em;
+    color: whitesmoke;
+    font-family: 'JusticeFest';
+    user-select: none;
+    touch-action: none;
 }
 
 .master-container {
@@ -32,11 +45,18 @@ body {
     display: flex;
     flex-direction: column;
     border-right: 4px solid white;
+    font-family: 'Roboto';
 }
 
 #project-list {
     height: 260px;
     overflow-y: auto;
+}
+
+#nav-tabs-list,
+.projects-word-wrapper,
+#project-list {
+    padding-left: 10px;
 }
 
 ul li.nav-li-element {
@@ -53,14 +73,14 @@ ul .nav-li-element-wrapper:has(li.nav-li-element:hover) {
     background-color: #6bc0d8;
 }
 
-li.nav-li-element:hover{
+li.nav-li-element:hover {
     transition: all 250ms ease-in-out;
     color: black;
     transform: scale(1.03);
 }
 
 /* This is for the default tabs: Home, Today and This Week */
-.default-tabs:hover{
+.default-tabs:hover {
     transition: all 250ms ease-in-out;
     background-color: #6bc0d8;
 }
@@ -144,7 +164,7 @@ img.delete-project {
     margin-bottom: 5px;
     color: whitesmoke;
     font-size: 1.8em;
-    padding-left: 5px;
+    font-family: 'Roboto';
 }
 
 .project-input-wrapper {
@@ -180,7 +200,7 @@ img.delete-project {
     transition: all 200ms ease-in-out;
     background-color: #abd6d9;
     height: 25px;
-    animation: fade-in 400ms ease-in-out
+    animation: fade-in 400ms ease-in-out;
 }
 
 .to-do:hover {
@@ -341,7 +361,7 @@ img.delete-project {
 #task-form textarea {
     padding-left: 3px;
     font-size: 0.8em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto';
     appearance: none;
     border: none;
     outline-color: #22689e;
@@ -499,7 +519,7 @@ img.delete-project {
 textarea.edit-description {
     width: 80%;
     height: 100px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto';
     resize: none;
 }
 
