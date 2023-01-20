@@ -13,6 +13,11 @@ export default class DOMCache {
     static addProjectButton = document.getElementById('add-project')
     static cancelProjectButton = document.getElementById('cancel-project')
 
+    //learn-more modal elements
+    static learnMoreImageButton = document.getElementById('learn-more')
+    static learnMoreModal = document.querySelector('.learn-more-modal')
+    static closeLearnMoreButton = document.getElementById('close-learn-more-button')
+
     //add project form input
     static projectName = document.getElementById('project-name')
     static projectForm = document.getElementById('new-project-form')

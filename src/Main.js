@@ -1,5 +1,6 @@
 import './assets/styles/reset.css'
 import './assets/styles/style.css'
+import LightBulb from './assets/images/light-bulb-color.png'
 import DOMCache from './DOMCache'
 import DisplayHandler from './DisplayHandler';
 import Project from './Project';
@@ -106,6 +107,15 @@ const initializeNavTabs = (function () {
     })
 })();
 
+const initializeLearnMoreModal = (function () {
+    DOMCache.closeLearnMoreButton.addEventListener('click', () => {
+        DOMCache.learnMoreModal.style.display = 'none'
+    })
+
+    DOMCache.learnMoreImageButton.addEventListener('click', () => {
+        DOMCache.learnMoreModal.style.display = 'block'
+    })
+})();
 
 
 
