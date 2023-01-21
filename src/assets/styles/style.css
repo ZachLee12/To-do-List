@@ -45,26 +45,17 @@ body {
 }
 
 /* LEARN MORE MODAL */
-/* The Modal (background) */
 .learn-more-modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 #learn-more-modal-content {
@@ -72,14 +63,11 @@ body {
     display: flex;
     align-items: flex-start;
     margin: 10% auto;
-    /* 15% from the top and centered */
     padding: 50px;
     width: 60%;
-    /* Could be more or less, depending on screen size */
 }
 
 #learn-more-modal-content>p {
-    /* border: 2px solid red; */
     flex: 1 1 0;
     font-family: 'Roboto';
     font-size: 1.5em;
@@ -113,11 +101,6 @@ span#welcome-listable{
 #close-learn-more-button:active {
     background-color: #e05d5d;
 }
-
-
-
-
-
 
 .master-container {
     display: flex;
@@ -174,7 +157,6 @@ li.nav-li-element:hover {
     background-color: #6bc0d8;
 }
 
-
 ul .nav-li-element-wrapper:has(li.nav-li-element:active) {
     background-color: #5ea4b8;
     color: black;
@@ -200,7 +182,6 @@ img.delete-project {
     transition: all 200ms ease-in-out;
     width: 20px;
 }
-
 
 #new-project-button {
     justify-self: center;
@@ -404,7 +385,6 @@ img.delete-project {
     background-color: #2bc4cd;
 }
 
-
 #new-task-button {
     display: none;
     margin: auto;
@@ -525,7 +505,6 @@ img.delete-project {
     background-color: #e05d5d;
 }
 
-
 /* When a ToDo is checked */
 .strike-through {
     position: relative;
@@ -541,27 +520,18 @@ img.delete-project {
     width: calc(100% - 115px);
 }
 
-/* MODAL */
-/* The Modal (background) */
+/* Modal for description */
 .modal-wrapper {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 .description-buttons-wrapper {
@@ -586,7 +556,6 @@ img.delete-project {
     background-color: #6e9ee0
 }
 
-/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -632,7 +601,7 @@ textarea.edit-description {
     background-color: #e05d5d;
 }
 
-/* SCROLL BARR */
+/* SCROLL BAR */
 ::-webkit-scrollbar {
     width: 15px;
 }

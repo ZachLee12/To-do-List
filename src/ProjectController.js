@@ -1,7 +1,7 @@
 import Project from "./Project";
 import Storage from "./Storage";
 
-//this class controls all Project objects
+//This class controls all Project objects
 export default class ProjectController {
     constructor() {
         this.projectList = []

@@ -4,6 +4,7 @@ import CrossImage from './assets/images/cross.png'
 import CrossActiveImage from './assets/images/cross-active.png'
 import { format } from 'date-fns';
 
+//This class handles all display-related functions, which includes rendering, creating HTML elements and manipulating the DOM.
 export default class DisplayHandler {
     constructor() {
         throw new Error('Cannot instantiate static class DisplayHandler')

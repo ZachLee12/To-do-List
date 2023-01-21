@@ -3,6 +3,7 @@ export default class DOMCache {
     constructor() {
         throw new Error('Cannot instantiated static class DOMCache')
     }
+    
     //main content to render all ToDos
     static mainContent = document.getElementById('content')
 

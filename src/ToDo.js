@@ -10,6 +10,5 @@ export class ToDo {
         this.toDoFinished = toDoFinished;
         ToDo.instanceId++;
     }   
-
 }
 

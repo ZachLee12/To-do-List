@@ -1,3 +1,4 @@
+//This class handles all access to localStorage.
 export default class Storage {
     constructor() {
         throw new Error('Cannot instantiate static class Storage')
@@ -20,6 +21,4 @@ export default class Storage {
         }
         return localProjects;
     }
-
-
 }

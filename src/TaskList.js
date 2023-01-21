@@ -20,5 +20,4 @@ export class TaskList {
         let toRemove = this.toDoList.find(toDo => toDo.id === id)
         this.toDoList.splice(this.toDoList.indexOf(toRemove), 1)
     }
-
 }
