@@ -24,6 +24,7 @@ export default class DOMCache {
     //add project form input
     static projectName = document.getElementById('project-name')
     static projectForm = document.getElementById('new-project-form')
+    static sameNameErrorMessage = document.querySelector('.same-name-error-message')
 
     //task form inputs
     static title = document.getElementById('title')

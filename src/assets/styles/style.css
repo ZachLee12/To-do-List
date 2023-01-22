@@ -75,13 +75,13 @@ body {
 }
 
 #directly-word,
-#local-storage-word{
+#local-storage-word {
     font-style: italic;
 }
 
-span#welcome-listable{
+span#welcome-listable {
     font-family: 'JusticeFest';
-    color:whitesmoke;
+    color: whitesmoke;
     font-size: 1.3em
 }
 
@@ -227,6 +227,13 @@ img.delete-project {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+.same-name-error-message {
+    display: none;
+    position: absolute;
+    color: #e63535;
+    font-size: 0.8em;
 }
 
 .projects-word {

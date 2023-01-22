@@ -30,6 +30,10 @@ const initalizeFormButtons = (function () {
     DOMCache.addButton.addEventListener('click', addButtonFunction)
     DOMCache.cancelButton.addEventListener('click', cancelButtonFunction)
 
+    //Limit Date input to only from 'Today' onwards
+    var today = new Date().toISOString().split('T')[0];
+    DOMCache.dueDate.setAttribute('min', today)
+
     function newProjectFunction() {
         DOMCache.projectForm.style.display = 'block'
         DOMCache.newProjectButton.style.display = 'none'
@@ -39,6 +43,22 @@ const initalizeFormButtons = (function () {
         if (!DOMCache.projectForm.reportValidity()) {
             return
         }
+        let hasSameName = false;
+        projectController.getProjectList.forEach(project => {
+            if (project.getProjectName === DOMCache.projectName.value) {
+                hasSameName = true;
+            }
+        })
+        if (hasSameName) {
+            DOMCache.sameNameErrorMessage.style.display = 'block'
+            setTimeout(() => {
+                DOMCache.sameNameErrorMessage.style.display = 'none'
+            }, 1500)
+
+            return
+        }
+
+        DOMCache.projectForm.validity = true;
         DOMCache.projectForm.style.display = 'none'
         DOMCache.newTaskButton.style.display = 'none'
         DOMCache.newProjectButton.style.display = 'block'
