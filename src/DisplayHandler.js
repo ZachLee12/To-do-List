@@ -155,6 +155,8 @@ export default class DisplayHandler {
         objectDueDateSpan.innerHTML = format(dueDateObject, 'dd-MMM-yyyy')
         let editDueDateInput = document.createElement('input')
         editDueDateInput.type = 'date'
+        var today = new Date().toISOString().split('T')[0];
+        editDueDateInput.setAttribute('min', today)
         editDueDateInput.className = 'edit-due-date'
         editDueDateInput.value = toDoObject.dueDate
         editDueDateInput.style.display = 'none'
