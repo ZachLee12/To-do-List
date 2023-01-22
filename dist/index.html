@@ -13,11 +13,7 @@
     <header class="header">
         <p class="header-title">Listable.</p>
         <img id="learn-more" src="assets/images/0e1bbe2cfed693e97b1a.png">
-
-        <!-- The Modal -->
         <div id="myModal" class="learn-more-modal">
-
-            <!-- Modal content -->
             <div class="modal-content" id="learn-more-modal-content">
                 <p>Welcome to <span id="welcome-listable">Listable.</span>
                     We make your daily tasks...listable!
@@ -37,7 +33,6 @@
                 <br>
                 <button id="close-learn-more-button">Close</button>
             </div>
-
         </div>
     </header>
 
@@ -52,21 +47,19 @@
                 <p class="projects-word">Projects</p>
             </div>
             <ul id="project-list">
-
             </ul>
-
             <form action="" onsubmit="return false" id="new-project-form">
                 <div class="project-input-wrapper">
                     <label for="project-name">Project Name:</label>
                     <input type="text" name="project-name" id="project-name" required maxlength="17">
                 </div>
+                <div class="same-name-error-message">Another project has the same name.</div>
                 <nav class="form-buttons-wrapper">
                     <button type="button" id="add-project">Add</button>
                     <button type="button" id="cancel-project">Cancel</button>
                 </nav>
             </form>
             <button id="new-project-button">New Project</button>
-
         </nav>
         <div id='content-wrapper'>
             <div id='content'></div>
@@ -94,7 +87,6 @@
                         <option value="High">High</option>
                     </select>
                 </div>
-
                 <nav class="form-buttons-wrapper">
                     <button type="button" id="add-button">Add</button>
                     <button type="button" id="cancel-button">Cancel</button>
